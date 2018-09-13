@@ -29,9 +29,9 @@ class User extends Authenticatable
 
     public function lev() {
     return $this-> belongsTo('App\level','level');
-}
+    }
 
-public function ikan() {
-return $this-> hasMany('App\ikan');
-}
-}
+    public function ikan() {
+      return $this-> hasMany('App\ikan');
+    }
+  }

@@ -25,19 +25,21 @@
 		<div id="sidebar">
 			<div id="sidebar-wrapper">
 				<div class="sidebar-title">
-					<div class="sidebar-avatar-image"><img src="assets/images/logo2.png" alt=""></div><br>
+					<div class="sidebar-avatar-image"></div><br>
 
 				</div>
 				<div class="sidebar-avatar">
-					 <div class="sidebar-avatar-text"> {{ Auth::user()->username }} </div>
+					 <div class="sidebar-avatar-text"> {{ Auth::user()->name }} </div>
 				</div>
 				<ul class="sidebar-nav">
 
+						<li><a href="{{ url('/dashboardPengusaha') }}"> <span>Dashboard</span></a></li>
+
 					<li><a href="{{ url('/profilPengusaha/'.Auth::user()->id)}}"> <span>Profil</span></a></li>
 
-					<li><a href="{{ url('/daftarAgen') }}"> <span>Lihat Daftar Agen</span></a></li>
+					<li><a href="{{ url('/daftarAgenPengusaha') }}"> <span>Daftar Agen</span></a></li>
 
-					<li><a href="{{ url('/daftarPenawaranPengusaha') }}"> <span>Lihat Penawaran Ikan</span></a></li>
+					<li><a href="{{ url('/daftarPenawaranPengusaha') }}"> <span>Penawaran Ikan</span></a></li>
 
 					<li><a href="{{ url('/notifikasiPengusaha/'.Auth::user()->id)}}"><span>Notifikasi</span></a></li>
 

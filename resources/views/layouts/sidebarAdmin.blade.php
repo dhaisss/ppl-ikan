@@ -33,15 +33,15 @@
 				</div>
 				<ul class="sidebar-nav">
 
-					<!-- <li><a href="{{ url('/profilAgen') }}"> <span>Ubah Profil</span></a></li>
-					 -->
+				  <li><a href="{{ url('/dashboardAdmin') }}"> <span>Dashboard</span></a></li>
+
 					<li><a href="{{ url('/profilAdmin/'.Auth::user()->id) }}"> <span>Profil</span></a></li>
 
-					<li><a href="{{ url('/daftarPengusaha') }}"> <span>Daftar Pengusaha</span></a></li>
+					<li><a href="{{ url('/daftarPengusahaAdmin') }}"> <span>Daftar Pengusaha</span></a></li>
 
-					<li><a href="{{ url('/daftarAgen') }}"> <span>Daftar Agen</span></a></li>
+					<li><a href="{{ url('/daftarAgenAdmin') }}"> <span>Daftar Agen</span></a></li>
 
-					<li><a href="{{ url('/daftarPenawaran/'.Auth::user()->id) }}"><span>Daftar Penawaran</span></a></li>
+					<li><a href="{{ url('/daftarPenawaranAdmin/') }}"><span>Daftar Penawaran</span></a></li>
 
 					<li><a href="{{ url('/notifikasiAdmin/'.Auth::user()->id) }}"><span>Notifikasi</span></a></li>
 

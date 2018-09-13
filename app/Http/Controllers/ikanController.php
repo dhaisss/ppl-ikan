@@ -27,8 +27,15 @@ class ikanController extends Controller
   public function view($id)
   {
     $tampil= ikan::where('idAgen',$id)->get() ;
+
     return view ('daftarPenawaran',compact('tampil'));
   }
+
+	public function view2()
+	{
+		$tampil= ikan::all() ;
+		return view ('daftarPenawaranAdmin',compact('tampil'));
+	}
 
 	// public function notif($id)
 	// {
@@ -37,18 +44,6 @@ class ikanController extends Controller
   //
 	// 	return view ('notifikasiAgen',compact('tampils','tampils2'));
 	// }
-
-	// public function pengusaha(Request $request)
-	// {
-	// 	$tampil= User::where('level',2)->get();
-	// 	return view('daftarPengusaha',compact('tampil'));
-	// }
-  //
-  // public function ikanPenawaran(Request $request)
-  // {
-  //   $tampil= ikan::where('idAgen',$id)->get();
-  //   return view('daftarPenawaran',compact('tampil'));
-  // }
 
 
 	public function penawaran()
@@ -72,21 +67,6 @@ class ikanController extends Controller
 	// 	return view('profilAgen', compact(Auth::user()->id));
   //
 	// }
-  //
-	// public function updateProfil(Request $request){
-  //
-	// 	$prof=Auth::user();
-	// 	$prof->nama= $request->nama;
-	// 	$prof->email= $request->email;
-	// 	$prof->kecamatan= $request->kecamatan;
-	// 	$prof->kabupaten= $request->kabupaten;
-	// 	$prof->provinsi= $request->provinsi;
-	// 	$prof->noTelepon= $request->noTelepon;
-	// 	$prof->rekening= $request->rekening;
-  //
-  // 		$prof->save();
-  // 		return view('profilAgen', compact(Auth::user()->id));
-	// }
 
 	public function insertPenawaran(Request $request)
 	{
@@ -108,19 +88,19 @@ class ikanController extends Controller
 
 
 
-	// public function editPenawaran($id){
-	// 	$edit= ikan::find($id);
-	// 	return view('daftarPenawaranUbah',compact('edit'));
-	// }
-  //
-	// public function updatePenawaran(Request $request, $id){
-  //
-	// 	$edit=ikan::find($id);
-	// 	$edit->status= $request->statusPenawaran;
-	// 	$edit->save();
-  //
-	// 	return redirect()->back();
-	// }
+	public function editPenawaran($id){
+		$edit= ikan::find($id);
+		return view('daftarPenawaranUbah',compact('edit'));
+	}
+
+	public function updatePenawaran(Request $request, $id){
+
+		$edit=ikan::find($id);
+		$edit->statusIkan= $request->status;
+		$edit->save();
+
+		return redirect('/dashboardAgen');
+	}
 
 	// public function terimaTransaksi($id)
 	// {

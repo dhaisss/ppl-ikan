@@ -1,5 +1,5 @@
 
-@extends('layouts.sidebarAgen')
+@extends('layouts.sidebarAdmin')
 
 @section('content')
 <div id="main-panel">
@@ -30,7 +30,6 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title">Data Penawaran Ikan</h3>
-									  <span class="text-grey">oleh {{ Auth::user()->name }}</span>
 								</div>
 								 <div class="panel-body table-responsive table-full">
 									<table class="table table-stripped table-bordered">
@@ -42,9 +41,8 @@
 											<td class="text-center text-nowrap">Nama Ikan</td>
 											<td class="text-center text-nowrap">Jumlah (kg)</td>
 											<td class="text-center text-nowrap">Harga (Rp)</td>
+											<td class="text-center text-nowrap">Agen</td>
 											<td class="text-center text-nowrap">Status</td>
-
-											<td class="text-center text-nowrap">Action</td>
 										</tr>
 
 										@foreach($tampil as $data)
@@ -55,11 +53,9 @@
 											<td class="text-center text-nowrap">{{$data->namaIkan}}</td>
 											<td class="text-center text-nowrap">{{$data->jumlahIkan}}</td>
 											<td class="text-center text-nowrap">{{$data->hargaIkan}}</td>
+											<td class="text-center text-nowrap">{{$data->pemilik->name}}</td>
 											<td class="text-center text-nowrap">{{$data->status_penawaran->statusIkan}}</td>
 
-											<td class="text-center text-nowrap">
-											<a href="/editPenawaran/{{$data->idIkan}}"><button type="submit" class="btn btn-success"><i class="fa fa-fw fa-list-alt"></i><font color="white">Ubah</font></button></a>
-											</td>
 										</tr>
 										@endforeach
 									</table>

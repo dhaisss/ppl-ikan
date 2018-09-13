@@ -10,26 +10,26 @@ class ikan extends Model
     protected $primaryKey = 'idIkan';
     protected $fillable = ['idIkan','tanggalPenawaran','idAgen','jenisIkan','namaIkan','jumlahIkan','hargaIkan','statusIkan','kategoriIkan'];
 
-    public function pemiliks() {
+    public function pemilik() {
 
     return  $this->belongsTo('App\User','idAgen');
 
     }
 
-    public function jenisIkan() {
+    public function jenis_ikan() {
 
     return  $this->belongsTo('App\jenisIkan','jenisIkan');
 
     }
 
-    public function kategoriIkan() {
+    public function kategori() {
 
     return  $this->belongsTo('App\kategoriIkan','kategoriIkan');
 
     }
 
-    public function statusPenawaran(){
-      return $this->belongsTo('App/statusPenawaran','statusIkan');
+    public function status_penawaran(){
+      return $this->belongsTo('App\statusPenawaran','statusIkan');
     }
 
 

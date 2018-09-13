@@ -33,8 +33,8 @@
 				</div>
 				<ul class="sidebar-nav">
 
-					<!-- <li><a href="{{ url('/profilAgen') }}"> <span>Ubah Profil</span></a></li>
-					 -->
+				 	<li><a href="{{ url('/dashboardAgen') }}"> <span>Dashboard</span></a></li>
+
 					<li><a href="{{ url('/profilAgen/'.Auth::user()->id) }}"> <span>Profil</span></a></li>
 
 					<li><a href="{{ url('/daftarPengusaha') }}"> <span>Daftar Pengusaha</span></a></li>

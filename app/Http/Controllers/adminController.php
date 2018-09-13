@@ -15,27 +15,32 @@ use Carbon\Carbon;
 /**
 *
 */
-class agenController extends Controller
+class adminController extends Controller
 {
 
 
 	public function home()
 	{
-		return view('dashboardAgen');
-
+		return view('dashboardAdmin');
 	}
 
 	public function profil($id)
 	{
-		return view('profilAgen', compact(Auth::user()->id));
-
+		return view('profilAdmin', compact(Auth::user()->id));
 	}
 
 	public function pengusaha(Request $request)
 {
 
 	$tampil= User::where('level',2)->get();
-	return view('daftarPengusaha',compact('tampil'));
+	return view('daftarPengusahaAdmin',compact('tampil'));
+}
+
+public function agen(Request $request)
+{
+
+$tampil= User::where('level',1)->get();
+return view('daftarAgenAdmin',compact('tampil'));
 }
 
 	public function updateProfil(Request $request){
@@ -49,7 +54,7 @@ class agenController extends Controller
 		$prof->noRek= $request->noRek;
 
   		$prof->save();
-  		return view('dashboardAgen', compact(Auth::user()->id));
+  		return view('dashboardAdmin', compact(Auth::user()->id));
 	}
 
 
