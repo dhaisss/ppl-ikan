@@ -1,6 +1,7 @@
 @extends('layouts.sidebarPengusaha')
 
 @section('content')
+
 <div id="main-panel">
 			<div id="top-nav">
 				<nav class="navbar navbar-default">
@@ -14,7 +15,7 @@
 							<button type="button" class="sidebar-toggle">
 								<i class="fa fa-bars"></i>
 							</button>
-							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-home"></i> Selamat Datang di Go-Lek Iwak</a>
+							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-home"></i>Dashboard</a>
 							</div>
 					</div>
 				</nav>

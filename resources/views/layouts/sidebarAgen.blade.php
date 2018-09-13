@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Golek Iwak</title>
+	<title>Laravel</title>
 	<link rel="stylesheet" href="{{url('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{url('assets/plugins/fontawesome/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{url('assets/css/theme-floyd.css')}}">
@@ -58,26 +58,12 @@
 					</form>
 				</li>
 
-<!--
-							<li>
-									<a href="{{ route('logout') }}"
-											onclick="event.preventDefault();
-															 document.getElementById('logout-form').submit();">
-											Logout
-									</a>
-
-									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-											{{ csrf_field() }}
-									</form>
-							</li> -->
-
-
 					</ul>
 				<div class="sidebar-footer">
 					<hr style="border-color: #DDD">
 					</a><br>
 				</div>
-				<div class="sidebar-avatar-image"><img src="assets/images/logo2.png" alt=""></div><br>
+				<div class="sidebar-avatar-image"></div><br>
 			</div>
 		</div>
 

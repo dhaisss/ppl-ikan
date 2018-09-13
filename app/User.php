@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','alamat','kecamatan','kabupaten','provinsi','level'
+        'name', 'email', 'password','alamat','kecamatan','kabupaten','provinsi','level','noRek'
     ];
 
     /**
@@ -31,4 +31,7 @@ class User extends Authenticatable
     return $this-> belongsTo('App\level','level');
 }
 
+public function ikan() {
+return $this-> hasMany('App\ikan');
+}
 }

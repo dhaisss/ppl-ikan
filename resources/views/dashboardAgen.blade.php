@@ -1,6 +1,7 @@
 @extends('layouts.sidebarAgen')
 
 @section('content')
+
 <div id="main-panel">
 			<div id="top-nav">
 				<nav class="navbar navbar-default">
@@ -15,6 +16,7 @@
 								<i class="fa fa-bars"></i>
 							</button>
 							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-home"></i> Dashboard</a>
+
 							</div>
 					</div>
 				</nav>

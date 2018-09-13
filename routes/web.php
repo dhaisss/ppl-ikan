@@ -16,5 +16,15 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+//Login
 Route::get('/home', 'HomeController@dashboard')->name('home');
+
+//Agen
+Route::get('/buatPenawaran', 'ikanController@penawaran');
+Route::post('/insertPenawaran', 'ikanController@insertPenawaran');
+Route::get('/dashboardAgen', 'ikanController@agend');
+Route::get('/daftarPenawaran/{id}', 'ikanController@view');
+
+
+Route::get('/profilAgen/{id}', 'agenController@profil')->name('profil');
+Route::post('/updateProfil/{id}', 'agenController@updateProfil')->name('profil');
