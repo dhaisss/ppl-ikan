@@ -57,6 +57,7 @@ class RegisterController extends Controller
               'provinsi'=> 'required|string|max:255',
               'level'=> 'required',
               'noRek'=> 'required|string|max:16',
+              'noTelepon'=> 'required|string|max:13',
         ]);
     }
 
@@ -78,6 +79,7 @@ class RegisterController extends Controller
             'provinsi' => $data['provinsi'],
             'level' => $data['level'],
             'noRek' => $data['noRek'],
+            'noTelepon' => $data['noTelepon'],
           ])
         ;
     }

@@ -57,5 +57,34 @@ return view('daftarAgenAdmin',compact('tampil'));
   		return view('dashboardAdmin', compact(Auth::user()->id));
 	}
 
+	public function lihatNotif(){
+		$tampils=transaksi::where('statusTransaksi',4)->get();
+		$jumlah=transaksi::value('jumlahIkan');
+		$harga=transaksi::value('hargaIkan');
+		$ongkir=transaksi::value('ongkir');
+		$total=($jumlah*$harga)+$ongkir;
+
+		return view('notifikasiAdmin',compact('tampils','total','jumlah'));
+	}
+
+	public function verifikasi(Request $request, $id){
+
+		$edit=transaksi::find($id);
+		$edit->statusTransaksi='6';
+		$edit->save();
+
+		$tampils=transaksi::where('statusTransaksi',4)->get();
+		$jumlah=transaksi::value('jumlahIkan');
+		$harga=transaksi::value('hargaIkan');
+		$ongkir=transaksi::value('ongkir');
+		$total=($jumlah*$harga)+$ongkir;
+
+		return view('notifikasiAdmin',compact('tampils','total','jumlah'));
+	}
+
+	public function transaksi(){
+		$tampils= transaksi::whereBetween('statusTransaksi',[3,7])->get();
+		return view('transaksiAdmin',compact('tampils'));
+		}
 
 }

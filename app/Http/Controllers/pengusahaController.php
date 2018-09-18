@@ -9,6 +9,7 @@ use App\ikan;
 
 use Auth;
 use App\User;
+use App\transaksi;
 
 use Carbon\Carbon;
 /**
@@ -28,6 +29,28 @@ class pengusahaController extends Controller
 		$tampil= ikan::where('statusIkan',1)->get();
 		return view('daftarPenawaranPengusaha',compact('tampil'));
 	}
+	public function beliPenawaran($id){
+	$beli= ikan::find($id);
+	return view('beliIkan',compact('beli'));
+}
+
+public function lanjutBeli(Request $request)
+{
+
+	$insert = ([
+		$today = Carbon::now(),
+		'tanggalBeli' => $today,
+		'idIkan' => $request->id,
+		'jumlahIkan' => $request->jumlahIkan,
+		'hargaIkan' => $request->hargaIkan,
+		'idPengusaha'=>$request->user1,
+		'idAgen'=>$request->agen1,
+
+
+	]);
+	transaksi::create($insert);
+	return redirect('/dashboardPengusaha');
+}
 
 	// public function lihatTransaksi($id)
 	// {
@@ -63,15 +86,43 @@ class pengusahaController extends Controller
 	}
 
 
-	// public function notif($id)
-	// {
-	// 	$tampils= ikan::where('pengusaha',$id)->where('statusTransaksi',3)->get();
-	// 	$tampils2= ikan::where('pengusaha',$id)->where('statusTransaksi',2)->get();
-	// 	return view('notifikasiPengusaha',compact('tampils','tampils2'));
-  //
-	// }
+	public function notif($id)
+	{
+		$tampils= transaksi::where('idPengusaha',$id)->where('statusTransaksi',5)->get();
+		$tampils2= transaksi::where('idPengusaha',$id)->where('statusTransaksi',2)->get();
+		return view('notifikasiPengusaha',compact('tampils','tampils2'));
 
+	}
+	public function lanjutkanTransaksi($id){
+		$edit= transaksi::where('idTransaksi',$id)->where('statusTransaksi',5)->first();
+		$jumlah=transaksi::where('idTransaksi',$id)->value('jumlahIkan');
+		$harga=transaksi::where('idTransaksi',$id)->value('hargaIkan');
+		$ongkir=transaksi::where('idTransaksi',$id)->value('ongkir');
+		$total=($jumlah*$harga)+$ongkir;
 
+		return view('lanjut',compact('edit','total'));
+	}
+
+	public function konfirmTransaksi(Request $request, $id){
+		$edit= transaksi::find($id)->first();
+		$edit->statusTransaksi= '4';
+
+		// Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
+        $file       = $request->file('bukti');
+        $fileName   = $file->getClientOriginalName();
+        $request->file('bukti')->move("image/", $fileName);
+
+        $edit->buktiTransfer = $fileName;
+		$edit->save();
+
+		return redirect('/transaksiPengusaha/Auth::user()->id');
+		}
+
+		public function transaksi($id){
+			$tampils= transaksi::where('idPengusaha',$id)->whereBetween('statusTransaksi',[3,7])->get();
+
+			return view('transaksiPengusaha',compact('tampils'));
+			}
 	// public function beliPenawaran($id){
 	// 	$beli= ikan::find($id);
 	// 	return view('beliIkan',compact('beli'));

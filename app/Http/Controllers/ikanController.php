@@ -26,8 +26,7 @@ class ikanController extends Controller
 
   public function view($id)
   {
-    $tampil= ikan::where('idAgen',$id)->get() ;
-
+		$tampil= ikan::where('idAgen',$id)->orderBy('tanggalPenawaran','desc')->get() ;
     return view ('daftarPenawaran',compact('tampil'));
   }
 
@@ -55,19 +54,16 @@ class ikanController extends Controller
 	{
 		return view('dashboardAgen');
 	}
-	// public function lihatTransaksi($id)
-	// {
-	// 	$tampils= ikan::where('idAgen',$id)->where('statusTransaksi',4)->get();
-	// 	return view('transaksiAgen',compact('tampils'));
-  //
-	// }
 
-	// public function profil($id)
-	// {
-	// 	return view('profilAgen', compact(Auth::user()->id));
-  //
-	// }
 
+	protected function validator(array $data)
+	{
+			return Validator::make($data, [
+						'namaIkan'=> 'required',
+						'jumlahIkan'=> 'required|is_integer|max:10',
+						'hargaIkan'=> 'required|is_integer|max:20',
+			]);
+	}
 	public function insertPenawaran(Request $request)
 	{
 
@@ -83,8 +79,11 @@ class ikanController extends Controller
 
 			]);
 		ikan::create($insert);
-		return redirect('/dashboardAgen');
+		$tampil= ikan::where('idAgen',$request->agen)->orderBy('tanggalPenawaran','desc')->get() ;
+
+    return view ('daftarPenawaran',compact('tampil'));
 	}
+
 
 
 
@@ -97,40 +96,26 @@ class ikanController extends Controller
 
 		$edit=ikan::find($id);
 		$edit->statusIkan= $request->status;
+		$edit->jumlahIkan= $request->jumlah;
+		$edit->hargaIkan= $request->harga;
 		$edit->save();
 
 		return redirect('/dashboardAgen');
 	}
 
-	// public function terimaTransaksi($id)
-	// {
-	// 	$edit= ikan::find($id);
-	// 	return view('terima',compact('edit'));
-	// }
-  //
-	// public function updateTransaksi(Request $request, $id){
-  //
-	// 	$edit=ikan::find($id);
-	// 	$edit->statusTransaksi='3';
-	// 	$edit->ongkir=$request->ongkir;
-	// 	$edit->save();
-  //
-	// 	return redirect()->back();
-	// }
-  //
-	// public function tolakTransaksi($id)
-	// {
-	// 	$edit= ikan::find($id);
-	// 	return view('tolak',compact('edit'));
-	// }
-  //
-	// public function updateTolakTransaksi(Request $request, $id){
-  //
-	// 	$edit=ikan::find($id);
-	// 	$edit->statusTransaksi='2';
-	// 	$edit->save();
-  //
-	// 	return redirect()->back();
-	// }
+
+
+	public function profil($id)
+	{
+		return view('profilAgen', compact(Auth::user()->id));
+
+	}
+
+
+
+
+
+
+
 
 }

@@ -53,20 +53,20 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Nama Ikan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="namaIkan" value="{{$edit->namaIkan}}" required>
+										<input type="text" class="form-control" name="nama" value="{{$edit->namaIkan}}" readonly="readonly" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Jumlah Ikan(kg)</label>
 									<div class="col-sm-6">
-										<input type="text" placeholder="kg" readonly="readonly" class="form-control" name="jumlahIkan" value="{{$edit->jumlahIkan}}" required>
+										<input type="text" placeholder="kg" class="form-control" name="jumlah" value="{{$edit->jumlahIkan}}" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Harga Ikan (Rp)</label>
 									<div class="col-sm-6">
-										<input type="text" placeholder="Rp" class="form-control" readonly="readonly" name="hargaIkan" value="{{$edit->hargaIkan}}" required>
+										<input type="text" placeholder="Rp" class="form-control"  name="harga" value="{{$edit->hargaIkan}}" required>
 									</div>
 								</div>
 								<div class="form-group">

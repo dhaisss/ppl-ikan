@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@dashboard')->name('home');
 
 //Agen
 Route::get('/buatPenawaran', 'ikanController@penawaran');
+Route::get('/insertPenawaran', 'ikanController@validator');
 Route::post('/insertPenawaran', 'ikanController@insertPenawaran');
 Route::get('/dashboardAgen', 'ikanController@agend');
 Route::get('/daftarPenawaran/{id}', 'ikanController@view');
@@ -31,6 +32,8 @@ Route::post('/updateProfil/{id}', 'agenController@updateProfil')->name('profil')
 
 Route::get('/editPenawaran/{id}', 'ikanController@editPenawaran');
 Route::post('/updatePenawaran/{id}', 'ikanController@updatePenawaran');
+Route::get('/agenNotifikasi/{id}','agenController@viewNotif');
+
 
 //Admin
 Route::get('/daftarPenawaranAdmin', 'ikanController@view2');
@@ -46,3 +49,23 @@ Route::get('/dashboardPengusaha', 'pengusahaController@home');
 Route::get('/profilPengusaha/{id}', 'pengusahaController@profil')->name('profil');
 Route::get('/daftarAgenPengusaha', 'pengusahaController@agen');
 Route::get('/daftarPenawaranPengusaha', 'pengusahaController@view');
+Route::get('/beliPenawaran/{id}', 'pengusahaController@beliPenawaran');
+Route::post('/lanjutBeli', 'pengusahaController@lanjutBeli');
+Route::get('/notifikasiPengusaha/{id}', 'pengusahaController@notif')->name('notif');
+Route::get('/lanjutkanTransaksi/{id}', 'pengusahaController@lanjutkanTransaksi');
+Route::post('/konfirmTransaksi/{id}', 'pengusahaController@konfirmTransaksi');
+Route::get('/transaksiPengusaha/{id}', 'pengusahaController@transaksi')->name('daftar');
+
+//transaksi
+
+Route::get('/terimaTransaksi/{id}', 'agenController@terimaTransaksi');
+Route::post('/updateTransaksi/{id}', 'agenController@updateTransaksi');
+Route::post('/updateTransaksi2/{id}', 'agenController@updateTransaksi2');
+Route::get('/tolakTransaksi/{id}', 'agenController@tolakTransaksi');
+Route::post('/updateTolakTransaksi/{id}', 'agenController@updateTolakTransaksi');
+
+
+//admin
+Route::get('notifikasiAdmin','adminController@lihatNotif');
+Route::get('/verifikasi/{id}', 'adminController@verifikasi');
+Route::get('/transaksiAdmin', 'adminController@transaksi');

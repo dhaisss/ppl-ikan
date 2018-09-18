@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="{{url('assets/css/theme-helper.css')}}">
 	<style>
             html, body {
-                background: url("bg/WALLPAPER 1.jpg");
+                background-color: white;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;

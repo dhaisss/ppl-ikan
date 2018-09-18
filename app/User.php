@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','alamat','kecamatan','kabupaten','provinsi','level','noRek'
+        'name', 'email', 'password','alamat','kecamatan','kabupaten','provinsi','level','noRek','noTelepon'
     ];
 
     /**
@@ -33,5 +33,9 @@ class User extends Authenticatable
 
     public function ikan() {
       return $this-> hasMany('App\ikan');
+    }
+
+    public function pengusaha() {
+      return $this-> hasMany('App\transaksi');
     }
   }

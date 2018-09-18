@@ -44,7 +44,11 @@
   											<td class="text-center text-nowrap">Harga (Rp)</td>
   											<td class="text-center text-nowrap">Agen</td>
   											<td class="text-center text-nowrap">Status</td>
-  										</tr>
+												<td class="text-center text-nowrap">Action</td>
+										</tr>
+
+
+
 
   										@foreach($tampil as $data)
   										<tr>
@@ -56,8 +60,11 @@
   											<td class="text-center text-nowrap">{{$data->hargaIkan}}</td>
   											<td class="text-center text-nowrap">{{$data->pemilik->name}}</td>
   											<td class="text-center text-nowrap">{{$data->status_penawaran->statusIkan}}</td>
+												<td class="text-center text-nowrap">
+										 		<a href="/beliPenawaran/{{$data->idIkan}}"><button type="Beli" class="btn btn-success"><i class="fa fa-fw fa-list-alt"></i><font color="white">Beli</font></button></a>
+										 		</td>
+												</tr>
 
-  										</tr>
 
                       @endforeach
 

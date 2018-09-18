@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="{{url('assets/css/theme-helper.css')}}">
 	<style>
             html, body {
-                background: url("bg/WALLPAPER 1.jpg");
+                background-color: white;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -43,9 +43,9 @@
 
 					<li><a href="{{ url('/daftarPenawaranAdmin/') }}"><span>Daftar Penawaran</span></a></li>
 
-					<li><a href="{{ url('/notifikasiAdmin/'.Auth::user()->id) }}"><span>Notifikasi</span></a></li>
+					<li><a href="{{ url('/notifikasiAdmin/') }}"><span>Notifikasi</span></a></li>
 
-					<li><a href="{{ url('/transaksiAdmin/'.Auth::user()->id) }}"><span>Transaksi</span></a></li>
+				<li><a href="{{ url('/transaksiAdmin/') }}"><span>Transaksi</span></a></li>
 
 					<li><a href="{{ route('logout') }}"
 							onclick="event.preventDefault();

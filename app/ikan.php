@@ -16,6 +16,12 @@ class ikan extends Model
 
     }
 
+public function pembeli() {
+
+    return  $this->belongsTo('App\User','pengusaha');
+
+}
+
     public function jenis_ikan() {
 
     return  $this->belongsTo('App\jenisIkan','jenisIkan');
@@ -30,6 +36,10 @@ class ikan extends Model
 
     public function status_penawaran(){
       return $this->belongsTo('App\statusPenawaran','statusIkan');
+    }
+
+    public function trans(){
+      return $this->hasMany('App\transaksi');
     }
 
 
