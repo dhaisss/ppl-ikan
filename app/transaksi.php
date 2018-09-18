@@ -27,7 +27,12 @@ class transaksi extends Model
     return  $this->belongsTo('App\User','idPengusaha');
 
     }
+    
+    public function pemilik() {
 
+    return  $this->belongsTo('App\User','idAgen');
+
+    }
 
 
     public $timestamps = false;

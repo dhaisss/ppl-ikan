@@ -104,7 +104,7 @@ public function lanjutBeli(Request $request)
 	}
 
 	public function konfirmTransaksi(Request $request, $id){
-		$edit= transaksi::find($id)->first();
+		$edit= transaksi::find($id);
 		$edit->statusTransaksi= '4';
 
 		// Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
@@ -120,8 +120,19 @@ public function lanjutBeli(Request $request)
 
 		public function transaksi($id){
 			$tampils= transaksi::where('idPengusaha',$id)->whereBetween('statusTransaksi',[3,7])->get();
+			$tampils2= transaksi::where('idPengusaha',$id)->where('statusTransaksi',[7])->get();
+			return view('transaksiPengusaha',compact('tampils','tampils2'));
+			}
 
-			return view('transaksiPengusaha',compact('tampils'));
+			public function telahDiterima(Request $request, $id){
+
+				$edit=transaksi::find($id);
+				$edit->statusTransaksi='8';
+				$edit->save();
+
+
+				return redirect()->back();
+
 			}
 	// public function beliPenawaran($id){
 	// 	$beli= ikan::find($id);

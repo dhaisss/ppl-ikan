@@ -75,8 +75,49 @@
 								</div>
 
 							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title"> Dalam Pengiriman </h3>
+									<div class="panel-body table-responsive table-full">
+										<table class="table table-stripped table-bordered">
+
+	                    <tr>
+	                        <td class="text-center text-nowrap">ID </td>
+	                        <td class="text-center text-nowrap">Tanggal Penawaran</td>
+	                        <td class="text-center text-nowrap">Tanggal Beli</td>
+	                        <td class="text-center text-nowrap">Pengusaha</td>
+	                        <td class="text-center text-nowrap">Nama Ikan</td>
+	                        <td class="text-center text-nowrap">Jenis Ikan</td>
+	                        <td class="text-center text-nowrap">Kategori Ikan</td>
+	                        <td class="text-center text-nowrap">Jumlah ikan</td>
+	                        <td class="text-center text-nowrap">Harga ikan</td>
+													<td class="text-center text-nowrap">Status</td>
+	                      </tr>
+
+	                      @foreach($tampils as $data)
+	                      <tr>
+	                        <td class="text-center text-nowrap">{{$data->idTransaksi}}</td>
+	                        <td class="text-center text-nowrap">{{$data->transaksi->tanggalPenawaran}}</td>
+	                        <td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
+	                        <td class="text-center text-nowrap">{{$data->pembeli_ikan->name}}</td>
+	                        <td class="text-center text-nowrap">{{$data->transaksi->namaIkan}}</td>
+	                        <td class="text-center text-nowrap">{{$data->transaksi->jenis_ikan->jenisIkan}}</td>
+	                        <td class="text-center text-nowrap">{{$data->transaksi->kategori->kategori}}</td>
+	                        <td class="text-center text-nowrap">{{$data->jumlahIkan}}</td>
+	                        <td class="text-center text-nowrap">{{$data->hargaIkan}}</td>
+													<td class="text-center text-nowrap">{{$data->status->statusTransaksi}}</td>
+										 	</tr>
+											@endforeach
+
+										</table>
+									</div>
+
+								</div>
+
+							</div>
 						</div>
-				
+
 					</div>
 				</div>
 			</div>

@@ -20,7 +20,7 @@ body {
     font-weight: 300;
 }
 /*==========================================
-PRE LOADER 
+PRE LOADER
 ==========================================*/
 .preloader {
     position: fixed;
@@ -49,6 +49,7 @@ PRE LOADER
     margin: -20px 0 0 -20px;
 }
 img {
+
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -56,6 +57,7 @@ img {
     -webkit-user-drag: none;
     user-drag: none;
 }
+
 a,
 a:hover,
 a:active,
@@ -558,7 +560,7 @@ textarea::-ms-input-placeholder
 	width:17%;
 	margin-left:20px;
 	margin-bottom:20px;
-	
+
 }
 .portfolio-details{
 	width:100%;
@@ -618,7 +620,3 @@ textarea::-ms-input-placeholder
 	text-transform:uppercase;
 	font-family:'nexa_lightregular';
 }
-
-
-
-

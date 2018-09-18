@@ -40,8 +40,25 @@ class agenController extends Controller
 
 public function viewNotif($id){
 	$notif=transaksi::where('idAgen',$id)->where('statusTransaksi',1)->get();
-	return view ('agenNotifikasi',compact('notif'));
+	$tampils=transaksi::where('idAgen',$id)->where('statusTransaksi',7)->get();
+	return view ('agenNotifikasi',compact('notif','tampils'));
 }
+
+public function transaksi($id){
+	$tampils= transaksi::where('idAgen',$id)->where('statusTransaksi',6)->get();
+	return view('transaksiAgen',compact('tampils'));
+	}
+
+	public function telahDikirim(Request $request, $id){
+
+		$edit=transaksi::find($id);
+		$edit->statusTransaksi='7';
+		$edit->save();
+
+
+		return redirect()->back();
+
+	}
 
 	public function updateProfil(Request $request){
 
@@ -59,32 +76,26 @@ public function viewNotif($id){
 
 	public function terimaTransaksi($id)
 {
-	$edit= transaksi::find($id);
-
-	return view('terima',compact('edit'));
+	$transaksi= transaksi::find($id);
+	return view('terima',compact('transaksi'));
 }
 
 public function updateTransaksi(Request $request, $id){
+	$transaksi=transaksi::find($id);
+	$transaksi->transaksi->jumlahIkan -= $transaksi->jumlahIkan;
 
-	$edit=transaksi::find($id);
+	if ($transaksi->transaksi->jumlahIkan==0) {
+		$transaksi->transaksi->statusIkan=2;
+	}
+	$transaksi->transaksi->update();
 
-	$edit->statusTransaksi='5';
-	$edit->ongkir=$request->ongkir;
+	$transaksi->statusTransaksi='5';
+	$transaksi->ongkir=$request->ongkir;
 
-	$edit->save();
+	$transaksi->save();
 
 	$notif=transaksi::where('idAgen',$id)->where('statusTransaksi',1)->get();
-	return view ('agenNotifikasi',compact('notif'));
-}
-
-public function updateTransaksi2(Request $request, $id){
-	$edit2=ikan::find($id);
-  $jumlahAwal=ikan::where('idIkan',$id)->value('jumlahAwal');
-	$jumlahKedua=transaksi::where('idIkan',$id)->value('jumlahKedua');
-	$jumlahSekarang=($jumlahAwal-$jumlahKedua);
-	dd ($jumlahSekarang);
-	$edit2->jumlahIkan=($jumlahSekarang);
-	$edit2->save();
+	return view ('agenNotifikasi',compact('notif','transaksi'));
 }
 
 public function tolakTransaksi($id)

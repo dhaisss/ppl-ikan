@@ -33,91 +33,91 @@
 							<span class="text-grey">oleh {{ Auth::user()->name }}</span>
 						</div>
 						<div class="panel-body">
-							<form action="/updateTransaksi/{{$edit->idTransaksi}}" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+							<form action="/updateTransaksi/{{$transaksi->idTransaksi}}" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
 
 								{{ csrf_field() }}
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Tanggal Beli</label>
 									<div class="col-sm-6">
-										<input type="date" placeholder="Placeholder text" class="form-control" name="tanggalBeli" value="{{$edit->tanggalBeli}}" readonly="readonly" required>
+										<input type="date" placeholder="Placeholder text" class="form-control" name="tanggalBeli" value="{{$transaksi->tanggalBeli}}" readonly="readonly" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Tanggal Penawaran</label>
 									<div class="col-sm-6">
-										<input type="date" placeholder="Placeholder text" class="form-control" name="tanggalPenawaran" value="{{$edit->transaksi->tanggalPenawaran}}" readonly="readonly" required>
+										<input type="date" placeholder="Placeholder text" class="form-control" name="tanggalPenawaran" value="{{$transaksi->transaksi->tanggalPenawaran}}" readonly="readonly" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Pengusaha</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="pengusaha" value="{{$edit->pembeli_ikan->name}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="pengusaha" value="{{$transaksi->pembeli_ikan->name}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Alamat Pengusaha</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->alamat}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->alamat}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Kecamatan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->kecamatan}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->kecamatan}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Kabupaten</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->kabupaten}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->kabupaten}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Provinsi</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->provinsi}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->provinsi}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Kategori Ikan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="jenisIkan" value="{{$edit->transaksi->kategori->kategori}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="jenisIkan" value="{{$transaksi->transaksi->kategori->kategori}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Jenis Ikan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="jenisIkan" value="{{$edit->transaksi->jenis_ikan->jenisIkan}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="jenisIkan" value="{{$transaksi->transaksi->jenis_ikan->jenisIkan}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Nama Ikan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="namaIkan" value="{{$edit->transaksi->namaIkan}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="namaIkan" value="{{$transaksi->transaksi->namaIkan}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Jumlah Ikan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="jumlahIkan" value="{{$edit->jumlahIkan}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="jumlahIkan" value="{{$transaksi->jumlahIkan}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Harga Ikan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="hargaIkan" value="{{$edit->hargaIkan}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="hargaIkan" value="{{$transaksi->hargaIkan}}" required>
 									</div>
 								</div>
 
@@ -135,7 +135,7 @@
 										<br>
 										<div class="form-group">
 											<div class="col-sm-9" align="right">
-												<button class="btn btn-success" action="/updateTransaksi/{{$edit->idIkan}}" type="submit" value="edit" name="submit">Proses Transaksi</button>
+												<button class="btn btn-success" action="/updateTransaksi/{{$transaksi->idTransaksi}}" type="submit" value="transaksi" name="submit">Proses Transaksi</button>
 											</div>
 										</div>
 							 		</div>

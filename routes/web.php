@@ -34,6 +34,10 @@ Route::get('/editPenawaran/{id}', 'ikanController@editPenawaran');
 Route::post('/updatePenawaran/{id}', 'ikanController@updatePenawaran');
 Route::get('/agenNotifikasi/{id}','agenController@viewNotif');
 
+Route::get('/transaksiAgen/{id}', 'agenController@transaksi');
+
+Route::get('/telahDikirim/{id}', 'agenController@telahDikirim');
+
 
 //Admin
 Route::get('/daftarPenawaranAdmin', 'ikanController@view2');
@@ -55,12 +59,12 @@ Route::get('/notifikasiPengusaha/{id}', 'pengusahaController@notif')->name('noti
 Route::get('/lanjutkanTransaksi/{id}', 'pengusahaController@lanjutkanTransaksi');
 Route::post('/konfirmTransaksi/{id}', 'pengusahaController@konfirmTransaksi');
 Route::get('/transaksiPengusaha/{id}', 'pengusahaController@transaksi')->name('daftar');
+Route::get('/telahDiterima/{id}', 'pengusahaController@telahDiterima');
 
 //transaksi
 
 Route::get('/terimaTransaksi/{id}', 'agenController@terimaTransaksi');
 Route::post('/updateTransaksi/{id}', 'agenController@updateTransaksi');
-Route::post('/updateTransaksi2/{id}', 'agenController@updateTransaksi2');
 Route::get('/tolakTransaksi/{id}', 'agenController@tolakTransaksi');
 Route::post('/updateTolakTransaksi/{id}', 'agenController@updateTolakTransaksi');
 
