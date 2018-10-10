@@ -70,19 +70,29 @@ public function lanjutBeli(Request $request)
 		$prof= User::where('id',$id);
 		return view('profilPengusaha');
 	}
-	public function updateProfil(Request $request){
+	public function updateProfilPengusaha(Request $request){
 
-		$prof=Auth::user();
-		$prof->name= $request->name;
-		$prof->email= $request->email;
-		$prof->kecamatan= $request->kecamatan;
-		$prof->kabupaten= $request->kabupaten;
-		$prof->provinsi= $request->provinsi;
-		$prof->noTelepon= $request->noTelepon;
-		$prof->noRek= $request->noRek;
 
-  		$prof->save();
-  		return view('profilPengusaha', compact(Auth::user()->id));
+        $edit=Auth::user();
+        $edit->name= $request->name;
+        $edit->email= $request->email;
+        $edit->kecamatan= $request->kecamatan;
+        $edit->kabupaten= $request->kabupaten;
+        $edit->provinsi= $request->provinsi;
+        $edit->noRek= $request->noRek;
+        $edit->noTelepon= $request->noTelepon;
+        $ft = $request->file('foto');
+
+        if ($ft != null){
+            // Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
+            $file       = $request->file('foto');
+            $fileName   = $file->getClientOriginalName();
+            $file->move(('profil/'),$file->getClientOriginalName());
+
+            $edit->foto= $fileName;
+        }
+        $edit->save();
+  		return view('dashboardPengusaha', compact(Auth::user()->id));
 	}
 
 
@@ -109,7 +119,7 @@ public function lanjutBeli(Request $request)
 
 		// Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
         $file       = $request->file('bukti');
-        $fileName   = $file->getClientOriginalName();
+        $fileName   = $file->getClientOriginalName()+$id;
         $request->file('bukti')->move("image/", $fileName);
 
         $edit->buktiTransfer = $fileName;

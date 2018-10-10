@@ -8,7 +8,7 @@ class ikan extends Model
 
     protected $table = 'ikan';
     protected $primaryKey = 'idIkan';
-    protected $fillable = ['idIkan','tanggalPenawaran','idAgen','jenisIkan','namaIkan','jumlahIkan','hargaIkan','statusIkan','kategoriIkan'];
+    protected $fillable = ['idIkan','tanggalPenawaran','idAgen','jenisIkan','namaIkan','jumlahIkan','hargaIkan','statusIkan','kategoriIkan','fotoIkan'];
 
     public function pemilik() {
 

@@ -27,8 +27,23 @@
 
 								</div>
 								<div class="panel-body">
-									<form action="/updateProfil/{{Auth::user()->id}}" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+									<form enctype="multipart/form-data" action="/updateProfilAdmin/{{Auth::user()->id}}" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
 										 {{ csrf_field() }}
+
+										<div class="form-group">
+											<label class="col-sm-4 control-label"></label>
+											<div class="col-sm-6">
+												<span><img id="foto" src="/profil/{{Auth::user()->foto}}" width="200px" height="250px" align=center></span>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Ubah Foto</label>
+											<div class="col-sm-9">
+												<input class="filestyle" id="inpfoto" name="foto" type="file">
+											</div>
+										</div>
+
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Nama Lengkap</label>
 											<div class="col-sm-6">
@@ -45,6 +60,12 @@
 											<label class="col-sm-3 control-label">E-mail</label>
 											<div class="col-sm-6">
 												<input type="text"  name="email" value=" {{ Auth::user()->email }}" class="form-control">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Nomor Telepon</label>
+											<div class="col-sm-6">
+												<input type="text"  name="noTelepon" value=" {{ Auth::user()->noTelepon}}" class="form-control">
 											</div>
 										</div>
 										<div class="form-group">
@@ -91,8 +112,67 @@
 						</div>
 					</div>
 	</div>
-</body>
-<script src="assets/plugins/jquery/jquery-3.1.1.min.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/theme-floyd.js"></script>
-</html>
+@endsection
+@section('script')
+
+
+	{{--<script type="text/javascript">--}}
+        {{--$(document).ready(function() {--}}
+
+            {{--$('select[name="kecamatan"]').on('change', function(){--}}
+                {{--var idKecamatan = $(this).val();--}}
+                {{--if(idKecamatan) {--}}
+                    {{--$.ajax({--}}
+                        {{--url: '/kelurahan/get/'+idKecamatan,--}}
+                        {{--type:"GET",--}}
+                        {{--dataType:"json",--}}
+                        {{--beforeSend: function(){--}}
+                            {{--$('#loader').css("visibility", "visible");--}}
+                        {{--},--}}
+
+                        {{--success:function(data) {--}}
+
+                            {{--$('select[name="kelurahan"]').empty();--}}
+
+                            {{--$.each(data, function(key, value){--}}
+
+                                {{--$('select[name="kelurahan"]').append('<option value="'+ key +'">' + value + '</option>');--}}
+
+                            {{--});--}}
+                        {{--},--}}
+                        {{--complete: function(){--}}
+                            {{--$('#loader').css("visibility", "hidden");--}}
+                        {{--}--}}
+                    {{--});--}}
+                {{--} else {--}}
+                    {{--$('select[name="kelurahan"]').empty();--}}
+                {{--}--}}
+
+            {{--});--}}
+
+        {{--});--}}
+	{{--</script>--}}
+	<script>
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#foto').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#inpfoto").change(function () {
+
+            readURL(this);
+        });
+
+	</script>
+@endsection
+
+
+

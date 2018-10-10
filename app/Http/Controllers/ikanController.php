@@ -66,6 +66,10 @@ class ikanController extends Controller
 	}
 	public function insertPenawaran(Request $request)
 	{
+        // Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
+        $file       = $request->file('foto');
+        $fileName   = $file->getClientOriginalName();
+        $file->move(('ikan/'),$file->getClientOriginalName());
 
 		$insert = ([
       $today = Carbon::now(),
@@ -75,13 +79,16 @@ class ikanController extends Controller
 			'namaIkan' => $request->namaIkan,
 			'jumlahIkan' => $request->jumlahIkan,
 			'hargaIkan' => $request->hargaIkan,
-      'kategoriIkan' => $request->kategoriIkan,
+            'kategoriIkan' => $request->kategoriIkan,
+            $fileFt       = $request->file('foto'),
+            $ft   = $fileFt->getClientOriginalName(),
+            'fotoIkan'=> $ft,
 
 			]);
 		ikan::create($insert);
 		$tampil= ikan::where('idAgen',$request->agen)->orderBy('tanggalPenawaran','desc')->get() ;
 
-    return view ('daftarPenawaran',compact('tampil'));
+		return view ('daftarPenawaran',compact('tampil'));
 	}
 
 
@@ -98,7 +105,22 @@ class ikanController extends Controller
 		$edit->statusIkan= $request->status;
 		$edit->jumlahIkan= $request->jumlah;
 		$edit->hargaIkan= $request->harga;
+        $ft = $request->file('foto');
+        $statusIkan = $request->status;
+        if ($ft != null){
+            // Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
+            $file       = $request->file('foto');
+            $fileName   = $file->getClientOriginalName();
+            $file->move(('ikan/'),$file->getClientOriginalName());
+
+            $edit->foto= $fileName;
+        }
+        if ($statusIkan==2){
+            $edit->jumlahIkan= 0;
+        }
+
 		$edit->save();
+
 
 		return redirect('/dashboardAgen');
 	}

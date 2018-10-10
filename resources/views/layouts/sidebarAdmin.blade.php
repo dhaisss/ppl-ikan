@@ -78,11 +78,13 @@
 				<div class="sidebar-avatar-image"></div><br>
 			</div>
 		</div>
-
-			@yield('content')
+		@yield('content')
 	</div>
+	<script src="{{url('assets/plugins/jquery/jquery-3.1.1.min.js')}}"></script>
+	<script src="{{url('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script src="{{url('assets/js/theme-floyd.js')}}"></script>
+	@yield('script')
 </body>
-<script src="{{url('assets/plugins/jquery/jquery-3.1.1.min.js')}}"></script>
-<script src="{{url('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{url('assets/js/theme-floyd.js')}}"></script>
+
 </html>
+

@@ -30,16 +30,26 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title">Data Penawaran Ikan</h3>
-									  <span class="text-grey">oleh {{ Auth::user()->nama }}</span>
+									  <span class="text-grey">oleh {{ Auth::user()->name }}</span>
 								</div>
 								<div class="panel-body">
-									<form action="/insertPenawaran" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
-										<!-- <div class="form-group">
-											<label class="col-sm-3 control-label">Tanggal Penawaran </label>
-											<div class="col-sm-6">
-												<input type="date" placeholder="YYYY-MM-DD" class="form-control" name="tanggalPenawaran" required>
+									<form enctype="multipart/form-data" action="/insertPenawaran/" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+										{{ csrf_field() }}
+
+										<div class="form-group">
+											<label class="col-sm-4 control-label"></label>
+											<div class="col-sm-5">
+												<span><img id="foto" src="/ikan/fish.png" class="img-responsive" width="300px" height="300px"></span>
 											</div>
-											</div> -->
+										</div>
+
+										<div class="form-group">
+											<label class="col-sm-3 control-label">Ubah Foto</label>
+											<div class="col-sm-9">
+												<input class="filestyle" id="inpfoto" name="foto" type="file">
+											</div>
+										</div>
+
 
 											<div class="form-group">
 											<div class="col-sm-6">
@@ -103,4 +113,25 @@
 				</div>
 			</div>
 		</div>
+<script src="{{ asset('js/app.js') }}"></script>
+<script>
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#foto').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#inpfoto").change(function () {
+
+        readURL(this);
+    });
+
+</script>
 		@endsection

@@ -46,11 +46,13 @@ Route::get('/dashboardAdmin', 'adminController@home');
 Route::get('/profilAdmin/{id}', 'adminController@profil')->name('profil');
 Route::get('/daftarPengusahaAdmin', 'adminController@pengusaha');
 Route::get('/daftarAgenAdmin', 'adminController@agen');
+Route::post('/updateProfilAdmin/{id}', 'adminController@updateProfilAdmin')->name('profilAdmin');
 
 //pengusaha
 
 Route::get('/dashboardPengusaha', 'pengusahaController@home');
 Route::get('/profilPengusaha/{id}', 'pengusahaController@profil')->name('profil');
+Route::post('/updateProfilPengusaha/{id}', 'pengusahaController@updateProfilPengusaha')->name('profilPengusaha');
 Route::get('/daftarAgenPengusaha', 'pengusahaController@agen');
 Route::get('/daftarPenawaranPengusaha', 'pengusahaController@view');
 Route::get('/beliPenawaran/{id}', 'pengusahaController@beliPenawaran');

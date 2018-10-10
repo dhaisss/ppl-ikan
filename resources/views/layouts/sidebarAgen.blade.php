@@ -69,8 +69,9 @@
 
 			@yield('content')
 	</div>
-</body>
 <script src="{{url('assets/plugins/jquery/jquery-3.1.1.min.js')}}"></script>
 <script src="{{url('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{url('assets/js/theme-floyd.js')}}"></script>
+	@yield('script')
+</body>
 </html>
