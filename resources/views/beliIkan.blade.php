@@ -36,6 +36,13 @@
 							<form action="/lanjutBeli" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
 								{{ csrf_field() }}
 
+								<div class="form-group">
+									<label class="col-sm-4 control-label"></label>
+									<div class="col-sm-6">
+										<span><img id="foto" src="/ikan/{{$beli->fotoIkan}}" class="img-responsive" width="300px" height="300px" align=center></span>
+									</div>
+								</div>
+
 									<div class="form-group">
 										<label class="col-sm-3 control-label">ID Penawaran</label>
 										<div class="col-sm-6">

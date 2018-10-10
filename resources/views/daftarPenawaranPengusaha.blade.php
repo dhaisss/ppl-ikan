@@ -61,6 +61,7 @@
   											<td class="text-center text-nowrap">{{$data->pemilik->name}}</td>
   											<td class="text-center text-nowrap">{{$data->status_penawaran->statusIkan}}</td>
 												<td class="text-center text-nowrap">
+													<button type="button" class="btn btn-floyd" data-image="{{$data->fotoIkan}}" data-toggle="modal" data-target="#myModal" data-class="modal-default">Lihat</button>&nbsp
 										 		<a href="/beliPenawaran/{{$data->idIkan}}"><button type="Beli" class="btn btn-success"><i class="fa fa-fw fa-list-alt"></i><font color="white">Beli</font></button></a>
 										 		</td>
 												</tr>
@@ -76,5 +77,58 @@
 					</div>
 				</div>
 			</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<span></span>
+				</div>
+				<div class="modal-body">
+					<p class="text-center">
+						<span class="text-size-24">Foto Ikan</span><br>
+						<img width="400px" id="gambar"><br><br>
+
+					</p>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
 		</div>
+	</div>
+	<script src="assets/plugins/jquery/jquery-3.1.1.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/theme-floyd.js"></script>
+	<script>
+        $("#modal-normal > .panel-body > button").each(function(){
+            var cls = $(this).data('class');
+            $(this).click(function(){
+                $(".modal-dialog").removeClass('modal-default modal-primary modal-info modal-success modal-warning modal-danger').addClass(cls);
+                $(".modal-footer, .modal-header > span").empty();
+            });
+        });
+
+        $("#modal-header > .panel-body > button").each(function(){
+            var cls = $(this).data('class');
+            $(this).click(function(){
+                $(".modal-dialog").removeClass('modal-default modal-primary modal-info modal-success modal-warning modal-danger').addClass(cls);
+                $(".modal-footer, .modal-header > span").empty();
+                $(".modal-header > span").removeClass().addClass('text-size-20').append('Modal Title');
+            });
+        });
+
+        $("#modal-footer > .panel-body > button").each(function(){
+            var cls = $(this).data('class');
+            $(this).click(function(){
+                $(".modal-dialog").removeClass('modal-default modal-primary modal-info modal-success modal-warning modal-danger').addClass(cls);
+                $(".modal-footer, .modal-header > span").empty();
+                $(".modal-footer").html("<button class='btn btn-default'>ini tombol!</button><button class='btn btn-default'>kembali</button>");
+            });
+        });
+
+        $(".btn-floyd").click(function(){
+            $("#gambar").attr('src','/ikan/'+$(this).attr('data-image'));
+        });
+	</script>
+		</div>
+
 		@endsection
