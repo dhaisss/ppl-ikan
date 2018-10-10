@@ -37,7 +37,7 @@
 
 					<li><a href="{{ url('/profilAgen/'.Auth::user()->id) }}"> <span>Profil</span></a></li>
 
-					<li><a href="{{ url('/daftarPengusaha') }}"> <span>Daftar Pengusaha</span></a></li>
+					{{--<li><a href="{{ url('/daftarPengusaha') }}"> <span>Daftar Pengusaha</span></a></li>--}}
 
 					<li><a href="{{ url('/buatPenawaran') }}"> <span>Buat Penawaran Ikan</span></a></li>
 
