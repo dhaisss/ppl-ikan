@@ -36,7 +36,7 @@
 									<table class="table table-stripped table-bordered">
 
 									<tr>
-											<td class="text-center text-nowrap">ID Penawaran</td>
+
 											<td class="text-center text-nowrap">Tanggal Beli</td>
                       <td class="text-center text-nowrap">Nama Ikan</td>
                       <td class="text-center text-nowrap">Jenis Ikan</td>
@@ -51,7 +51,7 @@
 
 										@foreach($notif as $data)
 										<tr>
-											<td class="text-center text-nowrap">{{$data->idTransaksi}}</td>
+
 											<td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
                       <td class="text-center text-nowrap">{{$data->transaksi->namaIkan}}</td>
                       <td class="text-center text-nowrap">{{$data->transaksi->jenis_ikan->jenisIkan}}</td>
@@ -84,7 +84,7 @@
 
 	                    <tr>
 	                        <td class="text-center text-nowrap">ID </td>
-	                        <td class="text-center text-nowrap">Tanggal Penawaran</td>
+
 	                        <td class="text-center text-nowrap">Tanggal Beli</td>
 	                        <td class="text-center text-nowrap">Pengusaha</td>
 	                        <td class="text-center text-nowrap">Nama Ikan</td>
@@ -98,7 +98,7 @@
 	                      @foreach($tampils as $data)
 	                      <tr>
 	                        <td class="text-center text-nowrap">{{$data->idTransaksi}}</td>
-	                        <td class="text-center text-nowrap">{{$data->transaksi->tanggalPenawaran}}</td>
+
 	                        <td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
 	                        <td class="text-center text-nowrap">{{$data->pembeli_ikan->name}}</td>
 	                        <td class="text-center text-nowrap">{{$data->transaksi->namaIkan}}</td>

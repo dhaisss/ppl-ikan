@@ -71,6 +71,47 @@
 						</div>
 
 					</div>
+
+							<!-- basic form -->
+
+							<!-- Basic element -->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h3 class="panel-title"> Transaksi Berhasil</h3>
+
+											<div class="panel-body table-responsive table-full">
+												<table class="table table-stripped table-bordered">
+
+													<tr>
+														<td class="text-center text-nowrap">ID Penawaran</td>
+														<td class="text-center text-nowrap">Tanggal Beli</td>
+														<td class="text-center text-nowrap">No. Rek Agen</td>
+														<td class="text-center text-nowrap">Agen</td>
+														<td class="text-center text-nowrap">Total Harga</td>
+													</tr>
+
+													@foreach($tampil as $data)
+														<tr>
+															<td class="text-center text-nowrap">{{$data->idTransaksi}}</td>
+															<td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
+															<td class="text-center text-nowrap">{{$data->transaksi->pemilik->noRek}}</td>
+															<td class="text-center text-nowrap">{{$data->transaksi->pemilik->name}}</td>
+															<td class="text-center text-nowrap">{{($data->jumlahIkan*$data->hargaIkan)+$data->ongkir}}</td>
+
+														</tr>
+													@endforeach
+
+												</table>
+											</div>
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+
 				</div>
 
 			</div>

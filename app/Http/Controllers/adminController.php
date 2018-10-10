@@ -80,12 +80,13 @@ return view('daftarAgenAdmin',compact('tampil'));
 
 	public function lihatNotif(){
 		$tampils=transaksi::where('statusTransaksi',4)->get();
+        $tampil=transaksi::where('statusTransaksi',8)->get();
 		$jumlah=transaksi::value('jumlahIkan');
 		$harga=transaksi::value('hargaIkan');
 		$ongkir=transaksi::value('ongkir');
 		$total=($jumlah*$harga)+$ongkir;
 
-		return view('notifikasiAdmin',compact('tampils','total','jumlah'));
+		return view('notifikasiAdmin',compact('tampils','total','jumlah','tampil'));
 	}
 
 	public function verifikasi(Request $request, $id){

@@ -1,25 +1,3 @@
-@section('js')
-<script type="text/javascript">
-
-      function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#showgambar').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#inputgambar").change(function () {
-        readURL(this);
-    });
-
-</script>
-
-
 @extends('layouts.sidebarPengusaha')
 
 @section('content')
@@ -57,8 +35,15 @@
 
 <!-- Error -->
 <div class="panel-body">
-  <form action="/konfirmTransaksi/{{$edit->idTransaksi}}"  enctype="multipart/form-data"  method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+  <form enctype="multipart/form-data" action="/konfirmTransaksi/{{$edit->idTransaksi}}"  enctype="multipart/form-data"  method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
     {{ csrf_field() }}
+
+      <div class="form-group">
+          <label class="col-sm-4 control-label"></label>
+          <div class="col-sm-6">
+              <span><img id="fotoIkan" src="/ikan/{{$edit->transaksi->fotoIkan}}" class="img-responsive" width="300px" height="300px" align=center></span>
+          </div>
+      </div>
 
     <div class="form-group">
       <label class="col-sm-3 control-label">Tanggal Beli</label>
@@ -115,6 +100,13 @@
       </div>
     </div>
 
+      <div class="form-group">
+          <label class="col-sm-3 control-label">Bank</label>
+          <div class="col-sm-6">
+              <input type="text" readonly="readonly" class="form-control" name="bank" value="BCA" required>
+          </div>
+      </div>
+
     <div class="form-group">
       <label class="col-sm-3 control-label">Atas Nama</label>
       <div class="col-sm-6">
@@ -133,7 +125,17 @@
       <label class="col-sm-3 control-label">Bukti transfer</label>
       <div class="col-sm-6" style="border: none;">
         <!-- <img src="http://placehold.it/100x100" id="showgambar" style="max-width:200px;max-height:200px;float:left;" /> -->
-        <input type="file"  class="form-control" name="bukti"   required>
+          <div class="form-group">
+              <label class="col-sm-3 control-label"></label>
+              <div class="col-sm-6">
+                  <span><img id="foto" src="/image/picture.png" class="img-responsive" width="300px" height="300px" align=center></span>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="col-sm-9">
+                  <input class="filestyle" id="bukti" name="foto" type="file">
+              </div>
+          </div>
       </div>
     </div>
 
@@ -155,15 +157,31 @@
 
 
 
-
-
-<!-- Error -->
-
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script src="{{ asset('js/app.js') }}"></script>
+<script>
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#foto').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#bukti").change(function () {
+
+        readURL(this);
+    });
+
+</script>
 @endsection

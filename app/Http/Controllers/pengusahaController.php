@@ -118,9 +118,9 @@ public function lanjutBeli(Request $request)
 		$edit->statusTransaksi= '4';
 
 		// Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
-        $file       = $request->file('bukti');
-        $fileName   = $file->getClientOriginalName()+$id;
-        $request->file('bukti')->move("image/", $fileName);
+        $file       = $request->file('foto');
+        $fileName   = $file->getClientOriginalName();
+        $file->move(('image/'),$file->getClientOriginalName());
 
         $edit->buktiTransfer = $fileName;
 		$edit->save();

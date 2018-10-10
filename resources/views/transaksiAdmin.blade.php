@@ -1,5 +1,5 @@
 
-@extends('layouts.sidebarPengusaha')
+@extends('layouts.sidebarAdmin')
 
 @section('content')
 
@@ -38,8 +38,8 @@
 
                     <tr>
                         <td class="text-center text-nowrap">ID Penawaran</td>
-                        <td class="text-center text-nowrap">Tanggal Penawaran</td>
                         <td class="text-center text-nowrap">Tanggal Beli</td>
+                        <td class="text-center text-nowrap">No. Rek Agen</td>
                         <td class="text-center text-nowrap">Agen</td>
                         <td class="text-center text-nowrap">Nama Ikan</td>
                         <td class="text-center text-nowrap">Jumlah ikan</td>
@@ -50,8 +50,8 @@
                       @foreach($tampils as $data)
                       <tr>
                         <td class="text-center text-nowrap">{{$data->idTransaksi}}</td>
-                        <td class="text-center text-nowrap">{{$data->transaksi->tanggalPenawaran}}</td>
                         <td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
+                        <td class="text-center text-nowrap">{{$data->transaksi->pemilik->noRek}}</td>
                         <td class="text-center text-nowrap">{{$data->transaksi->pemilik->name}}</td>
                         <td class="text-center text-nowrap">{{$data->transaksi->namaIkan}}</td>
                         <td class="text-center text-nowrap">{{$data->jumlahIkan}}</td>

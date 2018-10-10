@@ -36,6 +36,13 @@
 								{{ csrf_field() }}
 
 								<div class="form-group">
+									<label class="col-sm-4 control-label"></label>
+									<div class="col-sm-6">
+										<span><img id="foto" src="/ikan/{{$edit->transaksi->fotoIkan}}" class="img-responsive" width="300px" height="300px" align=center></span>
+									</div>
+								</div>
+
+								<div class="form-group">
 									<label class="col-sm-3 control-label">Tanggal Beli</label>
 									<div class="col-sm-6">
 										<input type="date" placeholder="Placeholder text" class="form-control" name="tanggalBeli" value="{{$edit->tanggalBeli}}" readonly="readonly" required>

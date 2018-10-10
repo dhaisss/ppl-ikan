@@ -44,7 +44,7 @@
 										</div>
 
 										<div class="form-group">
-											<label class="col-sm-3 control-label">Ubah Foto</label>
+											<label class="col-sm-3 control-label">Masukkan Foto</label>
 											<div class="col-sm-9">
 												<input class="filestyle" id="inpfoto" name="foto" type="file">
 											</div>
