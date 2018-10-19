@@ -38,7 +38,7 @@
 									<table class="table table-stripped table-bordered">
 
                     <tr>
-                        <td class="text-center text-nowrap">ID </td>
+
                         <td class="text-center text-nowrap">Tanggal Penawaran</td>
                         <td class="text-center text-nowrap">Tanggal Beli</td>
                         <td class="text-center text-nowrap">Agen</td>
@@ -52,7 +52,7 @@
 
                       @foreach($tampils as $data)
                       <tr>
-                        <td class="text-center text-nowrap">{{$data->idTransaksi}}</td>
+
                         <td class="text-center text-nowrap">{{$data->transaksi->tanggalPenawaran}}</td>
                         <td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
                         <td class="text-center text-nowrap">{{$data->transaksi->pemilik->name}}</td>

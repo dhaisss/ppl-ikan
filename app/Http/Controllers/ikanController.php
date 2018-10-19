@@ -32,7 +32,7 @@ class ikanController extends Controller
 
 	public function view2()
 	{
-		$tampil= ikan::all() ;
+		$tampil= ikan::Where('statusIkan',1)->get();
 		return view ('daftarPenawaranAdmin',compact('tampil'));
 	}
 
@@ -113,7 +113,7 @@ class ikanController extends Controller
             $fileName   = $file->getClientOriginalName();
             $file->move(('ikan/'),$file->getClientOriginalName());
 
-            $edit->foto= $fileName;
+            $edit->fotoIkan= $fileName;
         }
         if ($statusIkan==2){
             $edit->jumlahIkan= 0;
