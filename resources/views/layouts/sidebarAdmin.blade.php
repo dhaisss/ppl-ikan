@@ -28,7 +28,7 @@
 
 				</div>
 				<div class="sidebar-avatar">
-
+					
 					<div class="sidebar-avatar-text">  {{ Auth::user()->name }}  </div>
 				</div>
 				<ul class="sidebar-nav">

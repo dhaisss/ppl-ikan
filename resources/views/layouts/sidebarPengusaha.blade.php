@@ -29,6 +29,11 @@
 
 				</div>
 				<div class="sidebar-avatar">
+					<div>
+						<div class="sidebar-avatar-image">
+							<span><img style="border-radius:20px;" src="/profil/{{Auth::user()->foto}}" width="100px" height="125px" align=center></span>
+						</div>
+					</div>
 					 <div class="sidebar-avatar-text"> {{ Auth::user()->name }} </div>
 				</div>
 				<ul class="sidebar-nav">
