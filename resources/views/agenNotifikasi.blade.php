@@ -92,7 +92,7 @@
 	                        <td class="text-center text-nowrap">Kategori Ikan</td>
 	                        <td class="text-center text-nowrap">Jumlah ikan</td>
 	                        <td class="text-center text-nowrap">Harga ikan</td>
-													<td class="text-center text-nowrap">Status</td>
+							<td class="text-center text-nowrap">Status</td>
 	                      </tr>
 
 	                      @foreach($tampils as $data)
