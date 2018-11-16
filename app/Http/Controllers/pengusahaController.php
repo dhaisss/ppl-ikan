@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\provinces;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\ikan;
@@ -68,7 +69,8 @@ public function lanjutBeli(Request $request)
 	public function profil($id)
 	{
 		$prof= User::where('id',$id);
-		return view('profilPengusaha');
+		$provinces = provinces::all();
+		return view('profilPengusaha',compact('provinces'));
 	}
 	public function updateProfilPengusaha(Request $request){
 
@@ -76,12 +78,15 @@ public function lanjutBeli(Request $request)
         $edit=Auth::user();
         $edit->name= $request->name;
         $edit->email= $request->email;
-        $edit->kecamatan= $request->kecamatan;
-        $edit->kabupaten= $request->kabupaten;
-        $edit->provinsi= $request->provinsi;
         $edit->noRek= $request->noRek;
         $edit->noTelepon= $request->noTelepon;
         $ft = $request->file('foto');
+        $kel= $request->villages;
+        $kec= $request->districts;
+        $kab= $request->regencies;
+        $prov= $request->provinces;
+
+
 
         if ($ft != null){
             // Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
@@ -90,6 +95,21 @@ public function lanjutBeli(Request $request)
             $file->move(('profil/'),$file->getClientOriginalName());
 
             $edit->foto= $fileName;
+        }
+        else if ($kel!=Auth::user()->desa->name){
+            $edit->villages= $request->villages;
+
+        }
+        else if ($kec!=Auth::user()->kecamatan->name){
+            $edit->districts= $request->districts;
+
+        }
+        else if ($kab!=Auth::user()->kota->name){
+            $edit->regencies= $request->regencies;
+
+        }
+        else if ($prov!=null){
+            $edit->provinces= $request->provinces;
         }
         $edit->save();
   		return view('dashboardPengusaha', compact(Auth::user()->id));

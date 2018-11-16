@@ -67,44 +67,32 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('provinces') ? ' has-error' : '' }}">
-                            <label for="provinces" class="col-md-4 control-label">Provinsi</label>
-                            <div class="col-md-6">
-                                <select name="provinces" class="form-control">
-                                    <option value="">Pilih Provinsi</option>
-                                    @foreach ($provinces as $prov )
-                                        <option value="{{ $prov->id }}"> {{ $prov->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                        <div class="form-group{{ $errors->has('kecamatan') ? ' has-error' : '' }}">
+                          <label class="col-md-4 control-label">Kecamatan</label>
 
-                        <div class="form-group{{ $errors->has('regencies') ? ' has-error' : '' }}">
-                            <label for="regencies" class="col-md-4 control-label">Kabupaten</label>
-                            <div class="col-md-4">
-                                <select name="regencies" class="form-control">
-                                    <option>Pilih Kab/Kota</option>
-                                </select>
-                            </div>
-                        </div>
+                          <div class="col-md-6">
+                               <input type="text" class="form-control" name="kecamatan" value="{{ old('kecamatan') }}">
 
-                        <div class="form-group{{ $errors->has('districts') ? ' has-error' : '' }}">
-                            <label for="districts" class="col-md-4 control-label">Kecamatan</label>
-                            <div class="col-md-4">
-                                <select name="districts" class="form-control">
-                                    <option>Pilih Kecamatan</option>
-                                </select>
-                            </div>
-                        </div>
+                          </div>
+                      </div>
 
-                        <div class="form-group{{ $errors->has('villages') ? ' has-error' : '' }}">
-                            <label for="villages" class="col-md-4 control-label">Kelurahan</label>
-                            <div class="col-md-4">
-                                <select name="villages" class="form-control">
-                                    <option>Pilih Kelurahan</option>
-                                </select>
-                            </div>
-                        </div>
+                      <div class="form-group{{ $errors->has('kabupaten') ? ' has-error' : '' }}">
+                          <label class="col-md-4 control-label">Kabupaten</label>
+
+                          <div class="col-md-6">
+                               <input type="text" class="form-control" name="kabupaten" value="{{ old('kabupaten') }}">
+
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('provinsi') ? ' has-error' : '' }}">
+                          <label class="col-md-4 control-label">Provinsi</label>
+
+                          <div class="col-md-6">
+                               <input type="text" class="form-control" name="provinsi" value="{{ old('provinsi') }}">
+
+                          </div>
+                      </div>
 
                       <div class="form-group{{ $errors->has('noRek') ? ' has-error' : '' }}">
                           <label class="col-md-4 control-label">Nomor Rekening</label>
@@ -163,113 +151,3 @@
     </div>
 </div>
 @endsection
-@section('script')
-    <script>
-        $(document).ready(function() {
-
-            $('select[name="provinces"]').on('change', function(){
-                var provinces_id = $(this).val();
-                if(provinces_id) {
-                    $.ajax({
-                        url: '/regencies/get/'+provinces_id,
-                        type:"GET",
-                        dataType:"json",
-                        beforeSend: function(){
-                            $('#loader').css("visibility", "visible");
-                        },
-
-                        success:function(data) {
-
-                            $('select[name="regencies"]').empty();
-
-                            $.each(data, function(key, value){
-
-                                $('select[name="regencies"]').append('<option value="'+ key +'">' + value + '</option>');
-
-                            });
-                        },
-                        complete: function(){
-                            $('#loader').css("visibility", "hidden");
-                        }
-                    });
-                } else {
-                    $('select[name="regencies"]').empty();
-                }
-
-            });
-
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-
-            $('select[name="regencies"]').on('change', function(){
-                var regency_id = $(this).val();
-                if(regency_id) {
-                    $.ajax({
-                        url: '/districts/get/'+regency_id,
-                        type:"GET",
-                        dataType:"json",
-                        beforeSend: function(){
-                            $('#loader').css("visibility", "visible");
-                        },
-
-                        success:function(data) {
-
-                            $('select[name="districts"]').empty();
-
-                            $.each(data, function(key, value){
-
-                                $('select[name="districts"]').append('<option value="'+ key +'">' + value + '</option>');
-
-                            });
-                        },
-                        complete: function(){
-                            $('#loader').css("visibility", "hidden");
-                        }
-                    });
-                } else {
-                    $('select[name="districts"]').empty();
-                }
-
-            });
-
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-
-            $('select[name="districts"]').on('change', function(){
-                var district_id = $(this).val();
-                if(district_id) {
-                    $.ajax({
-                        url: '/villages/get/'+district_id,
-                        type:"GET",
-                        dataType:"json",
-                        beforeSend: function(){
-                            $('#loader').css("visibility", "visible");
-                        },
-
-                        success:function(data) {
-
-                            $('select[name="villages"]').empty();
-
-                            $.each(data, function(key, value){
-
-                                $('select[name="villages"]').append('<option value="'+ key +'">' + value + '</option>');
-
-                            });
-                        },
-                        complete: function(){
-                            $('#loader').css("visibility", "hidden");
-                        }
-                    });
-                } else {
-                    $('select[name="villages"]').empty();
-                }
-
-            });
-
-        });
-    </script>
-    @endsection

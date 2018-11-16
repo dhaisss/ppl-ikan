@@ -19,6 +19,10 @@ Auth::routes();
 //Login
 Route::get('/home', 'HomeController@dashboard')->name('home');
 
+Route::get('regencies/get/{id}', 'adminController@getRegencies');
+Route::get('districts/get/{id}', 'adminController@getDistricts');
+Route::get('villages/get/{id}', 'adminController@getVillages');
+
 //Agen
 Route::get('/buatPenawaran', 'ikanController@penawaran');
 Route::get('/insertPenawaran', 'ikanController@validator');
@@ -75,3 +79,5 @@ Route::post('/updateTolakTransaksi/{id}', 'agenController@updateTolakTransaksi')
 Route::get('notifikasiAdmin','adminController@lihatNotif');
 Route::get('/verifikasi/{id}', 'adminController@verifikasi');
 Route::get('/transaksiAdmin', 'adminController@transaksi');
+
+

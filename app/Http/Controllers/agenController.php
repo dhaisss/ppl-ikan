@@ -10,6 +10,7 @@ use App\jenis;
 use Auth;
 use App\transaksi;
 use App\User;
+use App\provinces;
 
 use Carbon\Carbon;
 /**
@@ -27,7 +28,8 @@ class agenController extends Controller
 
 	public function profil($id)
 	{
-		return view('profilAgen', compact(Auth::user()->id));
+        $provinces = provinces::all();
+		return view('profilAgen', compact(Auth::user()->id,'provinces'));
 
 	}
 
@@ -65,12 +67,15 @@ public function transaksi($id){
         $edit=Auth::user();
         $edit->name= $request->name;
         $edit->email= $request->email;
-        $edit->kecamatan= $request->kecamatan;
-        $edit->kabupaten= $request->kabupaten;
-        $edit->provinsi= $request->provinsi;
         $edit->noRek= $request->noRek;
-        $ft = $request->file('foto');
         $edit->noTelepon= $request->noTelepon;
+        $ft = $request->file('foto');
+        $kel= $request->villages;
+        $kec= $request->districts;
+        $kab= $request->regencies;
+        $prov= $request->provinces;
+
+
 
         if ($ft != null){
             // Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
@@ -79,6 +84,21 @@ public function transaksi($id){
             $file->move(('profil/'),$file->getClientOriginalName());
 
             $edit->foto= $fileName;
+        }
+        else if ($kel!=Auth::user()->desa->name){
+            $edit->villages= $request->villages;
+
+        }
+        else if ($kec!=Auth::user()->kecamatan->name){
+            $edit->districts= $request->districts;
+
+        }
+        else if ($kab!=Auth::user()->kota->name){
+            $edit->regencies= $request->regencies;
+
+        }
+        else if ($prov!=null){
+            $edit->provinces= $request->provinces;
         }
         $edit->save();
         return view('dashboardAgen', compact(Auth::user()->id));

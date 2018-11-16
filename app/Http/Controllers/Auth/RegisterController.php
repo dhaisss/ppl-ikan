@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\regencies;
 use App\User;
+use App\provinces;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -51,10 +54,11 @@ class RegisterController extends Controller
               'name' => 'required|string|max:255',
               'email' => 'required|string|email|max:255|unique:users',
               'password' => 'required|string|min:6|confirmed',
-              'alamat'=> 'required|string|max:255',
-              'kecamatan'=> 'required|string|max:255',
-              'kabupaten'=> 'required|string|max:255',
-              'provinsi'=> 'required|string|max:255',
+              'alamat'=> 'required',
+                'villages'=> 'required',
+              'districts'=> 'required',
+              'regencies'=> 'required',
+              'provinces'=> 'required',
               'level'=> 'required',
               'noRek'=> 'required|string|max:16',
               'noTelepon'=> 'required|string|max:13',
@@ -73,15 +77,28 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'alamat' => $data['alamat'],
-            'kecamatan' => $data['kecamatan'],
-            'kabupaten' => $data['kabupaten'],
+            'villages' => $data['villages'],
+            'districts' => $data['districts'],
+            'regencies' => $data['regencies'],
             'password' => bcrypt($data['password']),
-            'provinsi' => $data['provinsi'],
+            'provinces' => $data['provinces'],
             'level' => $data['level'],
             'noRek' => $data['noRek'],
             'noTelepon' => $data['noTelepon'],
           ])
         ;
+    }
+    public function showRegistrationForm()
+    {
+        $provinces = provinces::all();
+        return view('auth/register',compact('provinces'));
+    }
+
+
+    public function getRegencies($id) {
+        $regencies = regencies::where("provinces",$id)->pluck("regencies","id");
+
+        return json_encode($regencies);
     }
 
 

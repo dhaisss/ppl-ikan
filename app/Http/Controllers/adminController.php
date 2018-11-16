@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\villages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\ikan;
@@ -10,6 +11,9 @@ use App\jenis;
 use Auth;
 use App\transaksi;
 use App\User;
+use App\regencies;
+use App\districts;
+use App\provinces;
 
 use Carbon\Carbon;
 /**
@@ -26,7 +30,8 @@ class adminController extends Controller
 
 	public function profil($id)
 	{
-		return view('profilAdmin', compact(Auth::user()->id));
+	    $provinces = provinces::all();
+		return view('profilAdmin', compact(Auth::user()->id,'provinces'));
 	}
 
 	public function pengusaha(Request $request)
@@ -45,26 +50,20 @@ return view('daftarAgenAdmin',compact('tampil'));
 
 	public function updateProfilAdmin(Request $request){
 
-//		$prof=Auth::user();
-//		$prof->name= $request->name;
-//		$prof->email= $request->email;
-//		$prof->kecamatan= $request->kecamatan;
-//		$prof->kabupaten= $request->kabupaten;
-//		$prof->provinsi= $request->provinsi;
-//		$prof->noRek= $request->noRek;
-//
-//  		$prof->save();
-//  		return view('dashboardAdmin', compact(Auth::user()->id));
 
         $edit=Auth::user();
         $edit->name= $request->name;
         $edit->email= $request->email;
-        $edit->kecamatan= $request->kecamatan;
-        $edit->kabupaten= $request->kabupaten;
-        $edit->provinsi= $request->provinsi;
         $edit->noRek= $request->noRek;
-        $ft = $request->file('foto');
         $edit->noTelepon= $request->noTelepon;
+        $ft = $request->file('foto');
+        $kel= $request->villages;
+        $kec= $request->districts;
+        $kab= $request->regencies;
+        $prov= $request->provinces;
+
+
+
 
         if ($ft != null){
             // Disini proses mendapatkan judul dan memindahkan letak gambar ke folder image
@@ -73,6 +72,21 @@ return view('daftarAgenAdmin',compact('tampil'));
             $file->move(('profil/'),$file->getClientOriginalName());
 
             $edit->foto= $fileName;
+        }
+        else if ($kel!=Auth::user()->desa->name){
+            $edit->villages= $request->villages;
+
+        }
+        else if ($kec!=Auth::user()->kecamatan->name){
+            $edit->districts= $kec;
+
+        }
+        else if ($kab!=Auth::user()->kota->name){
+            $edit->regencies= $request->regencies;
+
+        }
+        else if ($prov!=null){
+            $edit->provinces= $request->provinces;
         }
         $edit->save();
         return view('dashboardAdmin', compact(Auth::user()->id));
@@ -109,5 +123,22 @@ return view('daftarAgenAdmin',compact('tampil'));
 		$tampils= transaksi::whereBetween('statusTransaksi',[3,7])->get();
 		return view('transaksiAdmin',compact('tampils'));
 		}
+    public function getRegencies($id) {
+        $regencies = regencies::where("province_id",$id)->pluck("name","id");
+
+        return json_encode($regencies);
+    }
+
+    public function getDistricts($id) {
+        $districts = districts::where("regency_id",$id)->pluck("name","id");
+
+        return json_encode($districts);
+    }
+
+    public function getVillages($id) {
+        $villages = villages::where("district_id",$id)->pluck("name","id");
+
+        return json_encode($villages);
+    }
 
 }
