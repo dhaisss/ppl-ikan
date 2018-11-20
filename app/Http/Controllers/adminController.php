@@ -119,6 +119,22 @@ return view('daftarAgenAdmin',compact('tampil'));
 		return view('notifikasiAdmin',compact('tampils','total','tampil','jumlah'));
 	}
 
+    public function tolak(Request $request, $id){
+
+        $edit=transaksi::find($id);
+        $edit->statusTransaksi='2';
+        $edit->save();
+
+        $tampils=transaksi::where('statusTransaksi',4)->get();
+        $jumlah=transaksi::value('jumlahIkan');
+        $harga=transaksi::value('hargaIkan');
+        $ongkir=transaksi::value('ongkir');
+        $tampil=transaksi::where('statusTransaksi',8)->get();
+        $total=($jumlah*$harga)+$ongkir;
+
+        return view('notifikasiAdmin',compact('tampils','total','tampil','jumlah'));
+    }
+
 	public function transaksi(){
 		$tampils= transaksi::whereBetween('statusTransaksi',[3,7])->get();
 		return view('transaksiAdmin',compact('tampils'));

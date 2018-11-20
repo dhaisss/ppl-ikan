@@ -78,6 +78,7 @@ Route::post('/updateTolakTransaksi/{id}', 'agenController@updateTolakTransaksi')
 //admin
 Route::get('notifikasiAdmin','adminController@lihatNotif');
 Route::get('/verifikasi/{id}', 'adminController@verifikasi');
+Route::get('/tolak/{id}', 'adminController@tolak');
 Route::get('/transaksiAdmin', 'adminController@transaksi');
 
 

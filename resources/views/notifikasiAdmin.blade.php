@@ -54,6 +54,7 @@
 										<td class="text-center text-nowrap">
 											<button type="button" class="btn btn-floyd" data-image="{{$data->buktiTransfer}}" data-toggle="modal" data-target="#myModal" data-class="modal-default" style="color: black">Lihat</button>&nbsp
 											<a href="/verifikasi/{{$data->idTransaksi}}"><button type="submit" class="btn btn-success"> <font color="white">Setujui</font></button></a>
+											<a href="/tolak/{{$data->idTransaksi}}"><button type="submit" class="btn btn-danger"> <font color="white">Tolak</font></button></a>
 
 										</td>
 									</tr>
