@@ -44,9 +44,9 @@
 
 											<td class="text-center text-nowrap">{{$data->name}}</td>
 											<td class="text-center text-nowrap">{{$data->alamat}}</td>
-											<td class="text-center text-nowrap">{{$data->kecamatan}}</td>
-											<td class="text-center text-nowrap">{{$data->kabupaten}}</td>
-											<td class="text-center text-nowrap">{{$data->provinsi}}</td>
+											<td class="text-center text-nowrap">{{$data->kecamatan->name}}</td>
+											<td class="text-center text-nowrap">{{$data->kota->name}}</td>
+											<td class="text-center text-nowrap">{{$data->provinsi->name}}</td>
 											<td class="text-center text-nowrap">{{$data->noTelepon}}</td>
 
 										</tr>
