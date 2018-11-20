@@ -2,31 +2,27 @@
 
 @section('content')
 
+<main class="pt-4 mx-lg-7">
+<div class="container-fluid mt-5">
 <div id="main-panel">
-			<div id="top-nav">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<!-- Navbar toggle button -->
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-								<i class="fa fa-bars"></i>
-							</button>
-							<!-- Sidebar toggle button -->
-							<button type="button" class="sidebar-toggle">
-								<i class="fa fa-bars"></i>
-							</button>
-							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Daftar Penawaran Ikan </a>
-						</div>
-					</div>
-				</nav>
-			</div>
-<div id="content">
-				<div class="container-fluid">
+			<div class="card mb-4 wow fadeIn">
+
+                <!--Card content-->
+                <div class="card-body d-sm-flex justify-content-between">
+
+                    <h4 class="mb-2 mb-sm-0 pt-1">
+                    	<a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home</a>
+                        <span>/</span>
+                        <span>Daftar Penawaran Ikan</span>
+                    </h4>
+                </div>
+            </div>
 					<!-- basic form -->
 
 					<!-- Basic element -->
 					<div class="row">
 						<div class="col-md-12">
+							<div class="card card-body">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title">Penawaran Ikan</h3>
@@ -61,7 +57,7 @@
   											<td class="text-center text-nowrap">{{$data->pemilik->name}}</td>
   											<td class="text-center text-nowrap">{{$data->status_penawaran->statusIkan}}</td>
 												<td class="text-center text-nowrap">
-													<button type="button" class="btn btn-floyd" data-image="{{$data->fotoIkan}}" data-toggle="modal" data-target="#myModal" data-class="modal-default">Lihat</button>&nbsp
+													<button type="button" class="btn btn-floyd" data-image="{{$data->fotoIkan}}" data-toggle="modal" data-target="#myModal" data-class="modal-default" style="color: black">Lihat</button>&nbsp
 										 		<a href="/beliPenawaran/{{$data->idIkan}}"><button type="Beli" class="btn btn-success"><i class="fa fa-fw fa-list-alt"></i><font color="white">Beli</font></button></a>
 										 		</td>
 												</tr>
@@ -95,6 +91,7 @@
 			</div>
 		</div>
 	</div>
+</main>
 	<script src="assets/plugins/jquery/jquery-3.1.1.min.js"></script>
 	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/js/theme-floyd.js"></script>

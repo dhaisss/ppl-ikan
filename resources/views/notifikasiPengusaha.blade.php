@@ -1,79 +1,174 @@
 
-@extends('layouts.sidebarPengusaha')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Laravel</title>
+	<!-- Font Awesome -->
+	<link href="{{url('atema/css/font-awesome.min.css')}}" rel="stylesheet">
+	<link href="{{url('atema/css/font-awesome.css')}}" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link href="{{url('atema/css/bootstrap.min.css')}}" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="{{url('atema/css/mdb.min.css')}}" rel="stylesheet">
+	<!-- Your custom styles (optional) -->
+	<link href="{{url('atema/css/style.min.css')}}" rel="stylesheet">
+</head>
 
-@section('content')
+<body class="grey lighten-3">
 
+<!--Main Navigation-->
+<header>
 
-<div id="main-panel">
-			<div id="top-nav">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<!-- Navbar toggle button -->
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-								<i class="fa fa-bars"></i>
-							</button>
-							<!-- Sidebar toggle button -->
-							<button type="button" class="sidebar-toggle">
-								<i class="fa fa-bars"></i>
-							</button>
-							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Notifikasi </a>
-						</div>
-					</div>
-				</nav>
+	<!-- Navbar -->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+		<div class="container-fluid">
+
+			<!-- Brand -->
+			<a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+				<strong class="blue-text">SEPIKAN</strong>
+			</a>
+
+			<!-- Collapse -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<!-- Links -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+				<!-- Left -->
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link waves-effect" href="#"><i class="fa fa-home mr-2"></i>Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+				</ul>
+
+				<!-- Right -->
+				<ul class="navbar-nav nav-flex-icons">
+					<li class="nav-item">
+						<a class="nav-link waves-effect" href="{{ route('logout') }}"
+						   onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out mr-2"></i>Logout</a>
+					</li>
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+						{{ csrf_field() }}
+					</form>
+				</ul>
+
 			</div>
-<div id="content">
-				<div class="container-fluid">
-					<!-- basic form -->
 
-					<!-- Basic element -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title"> Pembelian diterima </h3>
-									<br>
+		</div>
+	</nav>
+	<!-- Navbar -->
 
-									<div class="panel-body table-responsive table-full">
+	<!-- Sidebar -->
+	<div class="sidebar-fixed position-fixed">
+
+		<div class="sidebar-avatar-image">
+			<span><img style="border-radius:20px; margin: 10px 60px;" src="/profil/{{Auth::user()->foto}}" width="100px" height="125px" align="center"></span>
+		</div>
+		<div class="sidebar-avatar">
+			<div style="margin: 10px auto;text-align: center;"class="sidebar-avatar-text"> <strong>{{ Auth::user()->name }}</strong></div>
+		</div>
+
+		<div class="list-group list-group-flush">
+			<a href="{{ url('/dashboardPengusaha') }}" class="list-group-item active waves-effect">
+				<i class="fa fa-pie-chart mr-3"></i>Dashboard
+			</a>
+
+			<a href="{{ url('/profilPengusaha/'.Auth::user()->id) }}" class="list-group-item list-group-item-action waves-effect">
+				<i class="fa fa-user mr-3"></i>Profile</a>
+
+			<a href="{{ url('/daftarAgenPengusaha') }}" class="list-group-item list-group-item-action waves-effect">
+				<i class="fa fa-users mr-3"></i>Daftar Agen</a>
+
+			<a href="{{ url('/daftarPenawaranPengusaha/') }}" class="list-group-item list-group-item-action waves-effect">
+				<i class="fa fa-address-book mr-3"></i>Penawaran Ikan</a>
+
+			<a href="{{ url('/notifikasiPengusaha/'.Auth::user()->id) }}" class="list-group-item list-group-item-action waves-effect">
+				<i class="fa fa-commenting mr-3"></i>Notifikasi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="badge" style="background-color: black"></span></a>
+
+			<a href="{{ url('/transaksiPengusaha/'.Auth::user()->id) }}" class="list-group-item list-group-item-action waves-effect">
+				<i class="fa fa-money mr-3"></i>Transaksi</a>
+		</div>
+
+	</div>
+	<!-- Sidebar -->
+
+</header>
+<!--Main Navigation-->
+<main class="pt-5 mx-lg-5">
+	<div class="container-fluid mt-5">
+		<div id="main-panel">
+			<div class="card mb-4 wow fadeIn">
+
+				<!--Card content-->
+				<div class="card-body d-sm-flex justify-content-between">
+
+					<h4 class="mb-2 mb-sm-0 pt-1">
+						<a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home</a>
+						<span>/</span>
+						<span>Notifikasi</span>
+					</h4>
+				</div>
+			</div>
+			<!-- basic form -->
+
+			<!-- Basic element -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card card-body">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title"> Pembelian diterima </h3>
+								<br>
+
+								<div class="panel-body table-responsive table-full">
 									<table class="table table-stripped table-bordered">
 
-									<tr>
+										<tr>
 
 											<td class="text-center text-nowrap">Tanggal Penawaran</td>
 											<td class="text-center text-nowrap">Tanggal Beli</td>
 											<td class="text-center text-nowrap">Agen</td>
-                      <td class="text-center text-nowrap">Nama Ikan</td>
+											<td class="text-center text-nowrap">Nama Ikan</td>
 											<td class="text-center text-nowrap">Jenis Ikan</td>
-                      <td class="text-center text-nowrap">Kategori Ikan</td>
+											<td class="text-center text-nowrap">Kategori Ikan</td>
 											<td class="text-center text-nowrap">Jumlah ikan</td>
 											<td class="text-center text-nowrap">Harga ikan</td>
 											<td class="text-center text-nowrap">Action</td>
 										</tr>
 
 										@foreach($tampils as $data)
-										<tr>
+											<tr>
 
-											<td class="text-center text-nowrap">{{$data->transaksi->tanggalPenawaran}}</td>
-											<td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
-											<td class="text-center text-nowrap">{{$data->transaksi->pemilik->name}}</td>
-                      <td class="text-center text-nowrap">{{$data->transaksi->namaIkan}}</td>
-											<td class="text-center text-nowrap">{{$data->transaksi->jenis_ikan->jenisIkan}}</td>
-                      <td class="text-center text-nowrap">{{$data->transaksi->kategori->kategori}}</td>
-											<td class="text-center text-nowrap">{{$data->jumlahIkan}}</td>
-											<td class="text-center text-nowrap">{{$data->hargaIkan}}</td>
-											 <td class="text-center text-nowrap">
-											<a href="/lanjutkanTransaksi/{{$data->idTransaksi}}"><button type="submit" class="btn btn-success"> <font color="white">Lanjutkan</font></button></a>
+												<td class="text-center text-nowrap">{{$data->transaksi->tanggalPenawaran}}</td>
+												<td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
+												<td class="text-center text-nowrap">{{$data->transaksi->pemilik->name}}</td>
+												<td class="text-center text-nowrap">{{$data->transaksi->namaIkan}}</td>
+												<td class="text-center text-nowrap">{{$data->transaksi->jenis_ikan->jenisIkan}}</td>
+												<td class="text-center text-nowrap">{{$data->transaksi->kategori->kategori}}</td>
+												<td class="text-center text-nowrap">{{$data->jumlahIkan}}</td>
+												<td class="text-center text-nowrap">{{$data->hargaIkan}}</td>
+												<td class="text-center text-nowrap">
+													<a href="/lanjutkanTransaksi/{{$data->idTransaksi}}"><button type="submit" class="btn btn-success"> <font color="white">Lanjutkan</font></button></a>
 
-										</tr>
+											</tr>
 										@endforeach
 
 									</table>
-									</div>
-
 								</div>
 
 							</div>
-							<div class="col-xs-12">
+
+						</div>
+						<div class="col-xs-12">
 							<div class="panel panel-danger">
 								<div class="panel-heading">
 									<h3 class="panel-title">Pembelian ditolak</h3>
@@ -81,41 +176,53 @@
 								<div class="panel-body table-responsive table-full">
 									<table class="table table-stripped table-bordered">
 
-                    <tr>
+										<tr>
 
-                        <td class="text-center text-nowrap">Tanggal Penawaran</td>
-                        <td class="text-center text-nowrap">Tanggal Beli</td>
-                        <td class="text-center text-nowrap">Agen</td>
-                        <td class="text-center text-nowrap">Nama Ikan</td>
-                        <td class="text-center text-nowrap">Jenis Ikan</td>
-                        <td class="text-center text-nowrap">Kategori Ikan</td>
-                        <td class="text-center text-nowrap">Jumlah ikan</td>
-                        <td class="text-center text-nowrap">Harga ikan</td>
-                      </tr>
+											<td class="text-center text-nowrap">Tanggal Penawaran</td>
+											<td class="text-center text-nowrap">Tanggal Beli</td>
+											<td class="text-center text-nowrap">Agen</td>
+											<td class="text-center text-nowrap">Nama Ikan</td>
+											<td class="text-center text-nowrap">Jenis Ikan</td>
+											<td class="text-center text-nowrap">Kategori Ikan</td>
+											<td class="text-center text-nowrap">Jumlah ikan</td>
+											<td class="text-center text-nowrap">Harga ikan</td>
+										</tr>
 
 
 										@foreach($tampils2 as $data)
-										<tr>
+											<tr>
 
-                      <td class="text-center text-nowrap">{{$data->transaksi->tanggalPenawaran}}</td>
-                      <td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
-                      <td class="text-center text-nowrap">{{$data->transaksi->pemilik->name}}</td>
-                      <td class="text-center text-nowrap">{{$data->transaksi->namaIkan}}</td>
-                      <td class="text-center text-nowrap">{{$data->transaksi->jenis_ikan->jenisIkan}}</td>
-                      <td class="text-center text-nowrap">{{$data->transaksi->kategori->kategori}}</td>
-                      <td class="text-center text-nowrap">{{$data->jumlahIkan}}</td>
-                      <td class="text-center text-nowrap">{{$data->hargaIkan}}</td>
+												<td class="text-center text-nowrap">{{$data->transaksi->tanggalPenawaran}}</td>
+												<td class="text-center text-nowrap">{{$data->tanggalBeli}}</td>
+												<td class="text-center text-nowrap">{{$data->transaksi->pemilik->name}}</td>
+												<td class="text-center text-nowrap">{{$data->transaksi->namaIkan}}</td>
+												<td class="text-center text-nowrap">{{$data->transaksi->jenis_ikan->jenisIkan}}</td>
+												<td class="text-center text-nowrap">{{$data->transaksi->kategori->kategori}}</td>
+												<td class="text-center text-nowrap">{{$data->jumlahIkan}}</td>
+												<td class="text-center text-nowrap">{{$data->hargaIkan}}</td>
 
-										</tr>
+											</tr>
 										@endforeach
 
 									</table>
-									</div>
+								</div>
 							</div>
-						</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		@endsection
+	</div>
+</main>
+<script type="text/javascript" src="{{url('atema/js/jquery-3.3.1.min.js')}}"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{{url('atema/js/popper.min.js')}}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{{url('atema/js/bootstrap.min.js')}}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{{url('atema/js/mdb.min.js')}}"></script>
+
+</body>
+
+</html>
+

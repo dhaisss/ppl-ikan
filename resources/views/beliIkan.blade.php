@@ -2,33 +2,33 @@
 
 @section('content')
 
-<div id="main-panel">
-	<div id="top-nav">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<!-- Navbar toggle button -->
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-						<i class="fa fa-bars"></i>
-					</button>
-					<!-- Sidebar toggle button -->
-					<button type="button" class="sidebar-toggle">
-						<i class="fa fa-bars"></i>
-					</button>
-					<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Penawaran Ikan </a>
-				</div>
-			</div>
-		</nav>
-	</div>
-	<div id="content">
+<div id="main-panel" style="margin-left: 300px">
+	{{--<div id="top-nav">--}}
+		{{--<nav class="navbar navbar-default">--}}
+			{{--<div class="container-fluid">--}}
+				{{--<div class="navbar-header">--}}
+					{{--<!-- Navbar toggle button -->--}}
+					{{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">--}}
+						{{--<i class="fa fa-bars"></i>--}}
+					{{--</button>--}}
+					{{--<!-- Sidebar toggle button -->--}}
+					{{--<button type="button" class="sidebar-toggle">--}}
+						{{--<i class="fa fa-bars"></i>--}}
+					{{--</button>--}}
+					{{--<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Penawaran Ikan </a>--}}
+				{{--</div>--}}
+			{{--</div>--}}
+		{{--</nav>--}}
+	{{--</div>--}}
+	<div id="content" >
 		<div class="container-fluid">
 			<!-- basic form -->
 
 			<!-- Basic element -->
-			<div class="row">
-				<div class="col-md-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">
+			<div class="row" >
+				<div class="col-md-12" style="margin-top: 65px">
+					<div class="panel panel-default" >
+						<div class="panel-heading" >
 							<h3 class="panel-title">Beli Penawaran Ikan</h3>
 
 						</div>
@@ -53,7 +53,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tanggal Penawaran</label>
 										<div class="col-sm-6">
-											<input type="date" placeholder="Placeholder text" class="form-control" name="tanggalPenawaran" value="{{$beli->tanggalPenawaran}}" readonly="readonly" required>
+											<input type="text" placeholder="Placeholder text" class="form-control" name="tanggalPenawaran" value="{{$beli->tanggalPenawaran}}" readonly="readonly" required>
 										</div>
 									</div>
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="main-panel">
+<div id="main-panel" style="margin-left: 300px">
 	<div id="top-nav">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -26,7 +26,7 @@
 
 			<!-- Basic element -->
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12" style="margin-top: 50px">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">Terima Pembelian</h3>
@@ -47,14 +47,14 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Tanggal Beli</label>
 									<div class="col-sm-6">
-										<input type="date" placeholder="Placeholder text" class="form-control" name="tanggalBeli" value="{{$transaksi->tanggalBeli}}" readonly="readonly" required>
+										<input type="text" placeholder="Placeholder text" class="form-control" name="tanggalBeli" value="{{$transaksi->tanggalBeli}}" readonly="readonly" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Tanggal Penawaran</label>
 									<div class="col-sm-6">
-										<input type="date" placeholder="Placeholder text" class="form-control" name="tanggalPenawaran" value="{{$transaksi->transaksi->tanggalPenawaran}}" readonly="readonly" required>
+										<input type="text" placeholder="Placeholder text" class="form-control" name="tanggalPenawaran" value="{{$transaksi->transaksi->tanggalPenawaran}}" readonly="readonly" required>
 									</div>
 								</div>
 
@@ -73,23 +73,31 @@
 								</div>
 
 								<div class="form-group">
+									<label class="col-sm-3 control-label">Kelurahan</label>
+									<div class="col-sm-6">
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->Desa->name}}" required>
+									</div>
+								</div>
+
+
+								<div class="form-group">
 									<label class="col-sm-3 control-label">Kecamatan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->kecamatan}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->Kecamatan->name}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Kabupaten</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->kabupaten}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->kota->name}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Provinsi</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->provinsi}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->provinsi->name}}" required>
 									</div>
 								</div>
 

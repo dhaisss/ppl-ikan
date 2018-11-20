@@ -1,26 +1,24 @@
 @extends('layouts.sidebarPengusaha')
 
 @section('content')
-	<div id="main-panel">
-		<div id="top-nav">
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<!-- Navbar toggle button -->
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-							<i class="fa fa-bars"></i>
-						</button>
-						<!-- Sidebar toggle button -->
-						<button type="button" class="sidebar-toggle">
-							<i class="fa fa-bars"></i>
-						</button>
-						<a class="navbar-brand text-size-24" href="#"><i class="fa fa-home"></i> Profil</a>
-					</div>
-				</div>
-			</nav>
-		</div>
+<main class="pt-5 mx-lg-5">
+<div class="container-fluid mt-5">
+<div id="main-panel">
+			<div class="card mb-4 wow fadeIn">
+
+                <!--Card content-->
+                <div class="card-body d-sm-flex justify-content-between">
+
+                    <h4 class="mb-2 mb-sm-0 pt-1">
+                    	<a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home</a>
+                        <span>/</span>
+                        <span>Profile</span>
+                    </h4>
+                </div>
+            </div>
 		<div class="row">
 			<div class="col-md-12">
+				<div class="card card-body">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Profil {{ Auth::user()->name }}</h3>
@@ -79,7 +77,7 @@
 								<label for="provinces" class="col-sm-3 control-label">Provinsi</label>
 								<div class="col-sm-6">
 									<select name="provinces" class="form-control">
-										<option value="">{{Auth::user()->provinsi->name}}</option>
+										<option value="">{{Auth::user()->Provinsi->name}}</option>
 										@foreach ($provinces as $prov )
 											<option value="{{ $prov->id }}"> {{ $prov->name }}</option>
 										@endforeach
@@ -91,7 +89,7 @@
 								<label for="regencies" class="col-sm-3 control-label">Kabupaten</label>
 								<div class="col-sm-6">
 									<select name="regencies" class="form-control">
-										<option>{{Auth::user()->kota->name}}</option>
+										<option>{{Auth::user()->Kota->name}}</option>
 									</select>
 								</div>
 							</div>
@@ -100,7 +98,7 @@
 								<label for="districts" class="col-sm-3 control-label">Kecamatan</label>
 								<div class="col-sm-6">
 									<select name="districts" class="form-control">
-										<option>{{Auth::user()->kecamatan->name}}</option>
+										<option>{{Auth::user()->Kecamatan->name}}</option>
 									</select>
 								</div>
 							</div>
@@ -109,7 +107,7 @@
 								<label for="villages" class="col-sm-3 control-label">Kelurahan</label>
 								<div class="col-sm-6">
 									<select name="villages" class="form-control">
-										<option>{{Auth::user()->desa->name}}</option>
+										<option>{{Auth::user()->Desa->name}}</option>
 									</select>
 								</div>
 							</div>
@@ -122,7 +120,7 @@
 							</div>
 
 							<div class="form-group">
-								<div class="col-sm-9" align="right">
+								<div class="col-sm-9" align="center">
 									<button class="btn btn-success" type="submit">Ubah Profil</button>
 								</div>
 							</div>
@@ -133,7 +131,10 @@
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
+</div>
+</main>
 @endsection
 @section('script')
 	<script>

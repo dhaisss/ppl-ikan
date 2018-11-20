@@ -2,32 +2,27 @@
 @extends('layouts.sidebarAgen')
 
 @section('content')
-<div id="main-panel">
-			<div id="top-nav">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<!-- Navbar toggle button -->
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-								<i class="fa fa-bars"></i>
-							</button>
-							<!-- Sidebar toggle button -->
-							<button type="button" class="sidebar-toggle">
-								<i class="fa fa-bars"></i>
-							</button>
-							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Penawaran Ikan </a>
-						</div>
-					</div>
-				</nav>
-			</div>
-<div id="content">
-				<div class="container-fluid">
+<main class="pt-5 mx-lg-5">
+<div class="container-fluid mt-5">
+<div id="main-panel" >
+			<div class="card mb-4 wow fadeIn">
+
+                <!--Card content-->
+                <div class="card-body d-sm-flex justify-content-between">
+
+                    <h4 class="mb-2 mb-sm-0 pt-1">
+                        <span>Penawaran Ikan</span>
+                    </h4>
+                </div>
+
+            </div>
 					<!-- basic form -->
 
 					<!-- Basic element -->
 					<div class="row">
 						<div class="col-md-12">
-							<div class="panel panel-default">
+							<div class="card card-body">
+							<div class="panel panel-default" style="margin-left: 30px">
 								<div class="panel-heading">
 									<h3 class="panel-title">Data Penawaran Ikan</h3>
 									  <span class="text-grey">oleh {{ Auth::user()->name }}</span>
@@ -101,7 +96,7 @@
 
 										<input type="hidden" name="_token" value="{{ csrf_token() }}">
 										<div class="form-group">
-											<div class="col-sm-9" align="right">
+											<div class="col-sm-9" align="center">
 												<button class="btn btn-success" type="submit">Kirim Penawaran</button>
 											</div>
 										</div>
@@ -109,10 +104,11 @@
 								</div>
 							</div>
 						</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+</div>
+</main>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
 

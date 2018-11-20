@@ -2,33 +2,26 @@
 @extends('layouts.sidebarAgen')
 
 @section('content')
-
-
+<main class="pt-4 mx-lg-8">
+<div class="container-fluid mt-5">
 <div id="main-panel">
-			<div id="top-nav">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<!-- Navbar toggle button -->
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-								<i class="fa fa-bars"></i>
-							</button>
-							<!-- Sidebar toggle button -->
-							<button type="button" class="sidebar-toggle">
-								<i class="fa fa-bars"></i>
-							</button>
-							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Transaksi </a>
-						</div>
-					</div>
-				</nav>
-			</div>
-<div id="content">
-				<div class="container-fluid">
+			<div class="card mb-4 wow fadeIn">
+
+                <!--Card content-->
+                <div class="card-body d-sm-flex justify-content-between">
+
+                    <h4 class="mb-2 mb-sm-0 pt-1">
+                        <span>Transaksi</span>
+                    </h4>
+                </div>
+
+            </div>
 					<!-- basic form -->
 
 					<!-- Basic element -->
 					<div class="row">
 						<div class="col-md-12">
+							<div class="card card-body">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title"> Transaksi </h3>
@@ -59,10 +52,10 @@
                         <td class="text-center text-nowrap">{{$data->transaksi->kategori->kategori}}</td>
                         <td class="text-center text-nowrap">{{$data->jumlahIkan}}</td>
                         <td class="text-center text-nowrap">{{$data->pembeli_ikan->alamat}}</td>
-												<td class="text-center text-nowrap">{{$data->pembeli_ikan->kabupaten}}</td>
-												<td class="text-center text-nowrap">{{$data->pembeli_ikan->provinsi}}</td>
+												<td class="text-center text-nowrap">{{$data->pembeli_ikan->kota->name}}</td>
+												<td class="text-center text-nowrap">{{$data->pembeli_ikan->provinsi->name}}</td>
 												<td class="text-center text-nowrap">
-													<a href="/telahDikirim/{{$data->idTransaksi}}"><button type="submit" class="btn btn-success"> <font color="white">Telah Dikitim</font></button></a>
+													<a href="/telahDikirim/{{$data->idTransaksi}}"><button type="submit" class="btn btn-success"> <font color="white">Telah Dikirim</font></button></a>
 
 												</td>
 									 	</tr>
@@ -70,14 +63,12 @@
 
 									</table>
 									</div>
-
 								</div>
-
 							</div>
-
 						</div>
+					</div>
 					</div>
 				</div>
 			</div>
-		</div>
+</main>
 		@endsection

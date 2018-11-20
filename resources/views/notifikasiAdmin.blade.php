@@ -2,32 +2,27 @@
 @extends('layouts.sidebarAdmin')
 
 @section('content')
-
+<main class="pt-5 mx-lg-8">
+<div class="container-fluid mt-5">
 <div id="main-panel">
-	<div id="top-nav">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<!-- Navbar toggle button -->
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-						<i class="fa fa-bars"></i>
-					</button>
-					<!-- Sidebar toggle button -->
-					<button type="button" class="sidebar-toggle">
-						<i class="fa fa-bars"></i>
-					</button>
-					<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Notifikasi </a>
-				</div>
-			</div>
-		</nav>
-	</div>
-	<div id="content">
-		<div class="container-fluid">
+			<div class="card mb-4 wow fadeIn">
+
+                <!--Card content-->
+                <div class="card-body d-sm-flex justify-content-between">
+
+                    <h4 class="mb-2 mb-sm-0 pt-1">
+                    	<a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home</a>
+                        <span>/</span>
+                        <span>Daftar Agen Penjual Ikan</span>
+                    </h4>
+                </div>
+            </div>
 			<!-- basic form -->
 
 			<!-- Basic element -->
 			<div class="row">
 				<div class="col-md-12">
+					<div class="card card-body">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title"> Notifikasi Pembelian </h3>
@@ -57,7 +52,7 @@
 										<td class="text-center text-nowrap">{{($data->jumlahIkan*$data->hargaIkan)+$data->ongkir}}</td>
 										<td class="text-center text-nowrap">{{$data->pemilik->noRek}}</td>
 										<td class="text-center text-nowrap">
-											<button type="button" class="btn btn-floyd" data-image="{{$data->buktiTransfer}}" data-toggle="modal" data-target="#myModal" data-class="modal-default">Lihat</button>&nbsp
+											<button type="button" class="btn btn-floyd" data-image="{{$data->buktiTransfer}}" data-toggle="modal" data-target="#myModal" data-class="modal-default" style="color: black">Lihat</button>&nbsp
 											<a href="/verifikasi/{{$data->idTransaksi}}"><button type="submit" class="btn btn-success"> <font color="white">Setujui</font></button></a>
 
 										</td>
@@ -138,7 +133,7 @@
 
 
 	</div>
-
+</main>
 	<script src="assets/plugins/jquery/jquery-3.1.1.min.js"></script>
 	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/js/theme-floyd.js"></script>

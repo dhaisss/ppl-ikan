@@ -1,32 +1,26 @@
 @extends('layouts.sidebarAgen')
 
 @section('content')
-
+<main class="pt-4 mx-lg-8">
+<div class="container-fluid mt-5">
 <div id="main-panel">
-			<div id="top-nav">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<!-- Navbar toggle button -->
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-								<i class="fa fa-bars"></i>
-							</button>
-							<!-- Sidebar toggle button -->
-							<button type="button" class="sidebar-toggle">
-								<i class="fa fa-bars"></i>
-							</button>
-							<a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Daftar Pengusaha </a>
-						</div>
-					</div>
-				</nav>
-			</div>
-<div id="content">
-				<div class="container-fluid">
+	<div class="card mb-4 wow fadeIn">
+
+                <!--Card content-->
+                <div class="card-body d-sm-flex justify-content-between">
+
+                    <h4 class="mb-2 mb-sm-0 pt-1">
+                        <span>Daftar Pengusaha</span>
+                    </h4>
+                </div>
+
+            </div>
 					<!-- basic form -->
 
 					<!-- Basic element -->
 					<div class="row">
 						<div class="col-md-12">
+							<div class="card card-body">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h3 class="panel-title">Daftar Pengusaha</h3>
@@ -49,9 +43,9 @@
 
 											<td class="text-center text-nowrap">{{$data->name}}</td>
 											<td class="text-center text-nowrap">{{$data->alamat}}</td>
-											<td class="text-center text-nowrap">{{$data->kecamatan}}</td>
-											<td class="text-center text-nowrap">{{$data->kabupaten}}</td>
-											<td class="text-center text-nowrap">{{$data->provinsi}}</td>
+											<td class="text-center text-nowrap">{{$data->Kecamatan->name}}</td>
+											<td class="text-center text-nowrap">{{$data->kota->name}}</td>
+											<td class="text-center text-nowrap">{{$data->provinsi->name}}</td>
 											<td class="text-center text-nowrap">{{$data->noTelepon}}</td>
 
 										</tr>
@@ -62,8 +56,10 @@
 
 							</div>
 						</div>
+						</div>
 					</div>
-				</div>
-			</div>
+				
 		</div>
+</div>
+</main>
 		@endsection
