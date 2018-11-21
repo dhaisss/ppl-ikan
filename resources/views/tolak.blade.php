@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="main-panel">
+<div id="main-panel" style="margin-left: 300px">
 	<div id="top-nav">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -26,7 +26,7 @@
 
 			<!-- Basic element -->
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12" style="margin-top: 50px">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">Tolak Pembelian</h3
@@ -73,23 +73,24 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Kecamatan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->kecamatan}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->Desa->districts->name}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Kabupaten</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->kabupaten}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->Desa->districts->regencies->name}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Provinsi</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->provinsi}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$edit->pembeli_ikan->Desa->districts->regencies->provinces->name}}" required>
 									</div>
 								</div>
+
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Kategori Ikan</label>

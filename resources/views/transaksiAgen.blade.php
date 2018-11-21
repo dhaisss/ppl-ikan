@@ -52,8 +52,8 @@
                         <td class="text-center text-nowrap">{{$data->transaksi->kategori->kategori}}</td>
                         <td class="text-center text-nowrap">{{$data->jumlahIkan}}</td>
                         <td class="text-center text-nowrap">{{$data->pembeli_ikan->alamat}}</td>
-												<td class="text-center text-nowrap">{{$data->pembeli_ikan->kota->name}}</td>
-												<td class="text-center text-nowrap">{{$data->pembeli_ikan->provinsi->name}}</td>
+												<td class="text-center text-nowrap">{{$data->pembeli_ikan->Desa->districts->regencies->name}}</td>
+												<td class="text-center text-nowrap">{{$data->pembeli_ikan->Desa->districts->regencies->provinces->name}}</td>
 												<td class="text-center text-nowrap">
 													<a href="/telahDikirim/{{$data->idTransaksi}}"><button type="submit" class="btn btn-success"> <font color="white">Telah Dikirim</font></button></a>
 

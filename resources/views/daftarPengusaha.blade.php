@@ -43,9 +43,9 @@
 
 											<td class="text-center text-nowrap">{{$data->name}}</td>
 											<td class="text-center text-nowrap">{{$data->alamat}}</td>
-											<td class="text-center text-nowrap">{{$data->Kecamatan->name}}</td>
-											<td class="text-center text-nowrap">{{$data->kota->name}}</td>
-											<td class="text-center text-nowrap">{{$data->provinsi->name}}</td>
+											<td class="text-center text-nowrap">{{$data->Desa->districts->name}}</td>
+											<td class="text-center text-nowrap">{{$data->Desa->districts->regencies->name}}</td>
+											<td class="text-center text-nowrap">{{$data->Desa->districts->regencies->provinces->name}}</td>
 											<td class="text-center text-nowrap">{{$data->noTelepon}}</td>
 
 										</tr>

@@ -91,7 +91,7 @@
                     <i class="fa fa-address-book mr-3"></i>Penawaran Ikan</a>
 
                 <a href="{{ url('/notifikasiPengusaha/'.Auth::user()->id) }}" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fa fa-commenting mr-3"></i>Notifikasi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="badge" style="background-color: black">1</span></a>
+                    <i class="fa fa-commenting mr-3"></i>Notifikasi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="badge" style="background-color: black">{{$count}}</span></a>
 
                 <a href="{{ url('/transaksiPengusaha/'.Auth::user()->id) }}" class="list-group-item list-group-item-action waves-effect">
                     <i class="fa fa-money mr-3"></i>Transaksi</a>

@@ -83,21 +83,21 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Kecamatan</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->Kecamatan->name}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->Desa->districts->name}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Kabupaten</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->kota->name}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->Desa->districts->regencies->name}}" required>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Provinsi</label>
 									<div class="col-sm-6">
-										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->provinsi->name}}" required>
+										<input type="text" readonly="readonly" class="form-control" name="alamat" value="{{$transaksi->pembeli_ikan->Desa->districts->regencies->provinces->name}}" required>
 									</div>
 								</div>
 

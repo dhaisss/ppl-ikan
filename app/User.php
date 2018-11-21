@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','alamat','villages','districts','regencies','provinces','level','noRek','noTelepon','foto'
+        'name', 'email', 'password','alamat','villages','level','noRek','noTelepon','foto'
     ];
 
     /**
@@ -35,17 +35,6 @@ class User extends Authenticatable
         return $this-> belongsTo('App\villages','villages');
     }
 
-    public function Kecamatan() {
-        return $this-> belongsTo('App\districts','districts');
-    }
-
-    public function Kota() {
-        return $this-> belongsTo('App\regencies','regencies');
-    }
-
-    public function Provinsi() {
-        return $this-> belongsTo('App\provinces','provinces');
-    }
 
     public function ikan() {
       return $this-> hasMany('App\ikan');

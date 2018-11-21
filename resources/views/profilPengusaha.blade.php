@@ -73,11 +73,12 @@
 								</div>
 							</div>
 
+
 							<div class="form-group{{ $errors->has('provinces') ? ' has-error' : '' }}">
 								<label for="provinces" class="col-sm-3 control-label">Provinsi</label>
 								<div class="col-sm-6">
 									<select name="provinces" class="form-control">
-										<option value="">{{Auth::user()->Provinsi->name}}</option>
+										<option value="">{{Auth::user()->desa->districts->regencies->provinces->name}}</option>
 										@foreach ($provinces as $prov )
 											<option value="{{ $prov->id }}"> {{ $prov->name }}</option>
 										@endforeach
@@ -89,7 +90,7 @@
 								<label for="regencies" class="col-sm-3 control-label">Kabupaten</label>
 								<div class="col-sm-6">
 									<select name="regencies" class="form-control">
-										<option>{{Auth::user()->Kota->name}}</option>
+										<option>{{Auth::user()->desa->districts->regencies->name}}</option>
 									</select>
 								</div>
 							</div>
@@ -98,7 +99,7 @@
 								<label for="districts" class="col-sm-3 control-label">Kecamatan</label>
 								<div class="col-sm-6">
 									<select name="districts" class="form-control">
-										<option>{{Auth::user()->Kecamatan->name}}</option>
+										<option>{{Auth::user()->desa->districts->name}}</option>
 									</select>
 								</div>
 							</div>

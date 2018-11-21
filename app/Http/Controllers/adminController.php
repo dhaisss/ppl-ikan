@@ -24,28 +24,51 @@ class adminController extends Controller
 
 
 	public function home()
-	{
-		return view('dashboardAdmin');
+	{  $notif=transaksi::where('statusTransaksi',4)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
+		return view('dashboardAdmin',compact('count'));
 	}
 
 	public function profil($id)
 	{
 	    $provinces = provinces::all();
-		return view('profilAdmin', compact(Auth::user()->id,'provinces'));
+        $notif=transaksi::where('statusTransaksi',4)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
+		return view('profilAdmin', compact(Auth::user()->id,'provinces','count'));
 	}
 
 	public function pengusaha(Request $request)
 {
 
 	$tampil= User::where('level',2)->get();
-	return view('daftarPengusahaAdmin',compact('tampil'));
+    $notif=transaksi::where('statusTransaksi',4)->get();
+    $count = $notif->count();
+    if ($count==0){
+        $kosong = null;
+        $count = $kosong;
+    }
+	return view('daftarPengusahaAdmin',compact('tampil','count'));
 }
 
 public function agen(Request $request)
 {
 
 $tampil= User::where('level',1)->get();
-return view('daftarAgenAdmin',compact('tampil'));
+    $notif=transaksi::where('statusTransaksi',4)->get();
+    $count = $notif->count();
+    if ($count==0){
+        $kosong = null;
+        $count = $kosong;
+    }
+return view('daftarAgenAdmin',compact('tampil','count'));
 }
 
 	public function updateProfilAdmin(Request $request){
@@ -58,9 +81,7 @@ return view('daftarAgenAdmin',compact('tampil'));
         $edit->noTelepon= $request->noTelepon;
         $ft = $request->file('foto');
         $kel= $request->villages;
-        $kec= $request->districts;
-        $kab= $request->regencies;
-        $prov= $request->provinces;
+
 
 
 
@@ -77,19 +98,15 @@ return view('daftarAgenAdmin',compact('tampil'));
             $edit->villages= $request->villages;
 
         }
-        else if ($kec!=Auth::user()->kecamatan->name){
-            $edit->districts= $kec;
 
-        }
-        else if ($kab!=Auth::user()->kota->name){
-            $edit->regencies= $request->regencies;
-
-        }
-        else if ($prov!=null){
-            $edit->provinces= $request->provinces;
-        }
         $edit->save();
-        return view('dashboardAdmin', compact(Auth::user()->id));
+        $notif=transaksi::where('statusTransaksi',4)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
+        return view('dashboardAdmin', compact(Auth::user()->id,'count'));
 	}
 
 	public function lihatNotif(){
@@ -137,7 +154,13 @@ return view('daftarAgenAdmin',compact('tampil'));
 
 	public function transaksi(){
 		$tampils= transaksi::whereBetween('statusTransaksi',[3,7])->get();
-		return view('transaksiAdmin',compact('tampils'));
+        $notif=transaksi::where('statusTransaksi',4)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
+		return view('transaksiAdmin',compact('tampils','count'));
 		}
     public function getRegencies($id) {
         $regencies = regencies::where("province_id",$id)->pluck("name","id");

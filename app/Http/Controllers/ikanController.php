@@ -19,21 +19,38 @@ class ikanController extends Controller
 {
 
 
-	public function home()
-	{
-		return view('dashboardAgen');
+	public function agend()
+	{ $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
+		return view('dashboardAgen',compact('count'));
 	}
 
   public function view($id)
   {
 		$tampil= ikan::where('idAgen',$id)->orderBy('tanggalPenawaran','desc')->get() ;
-    return view ('daftarPenawaran',compact('tampil'));
+      $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+      $count = $notif->count();
+      if ($count==0){
+          $kosong = null;
+          $count = $kosong;
+      }
+    return view ('daftarPenawaran',compact('tampil','count'));
   }
 
 	public function view2()
 	{
 		$tampil= ikan::Where('statusIkan',1)->get();
-		return view ('daftarPenawaranAdmin',compact('tampil'));
+        $notif=transaksi::where('statusTransaksi',4)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
+		return view ('daftarPenawaranAdmin',compact('tampil','count'));
 	}
 
 	// public function notif($id)
@@ -46,14 +63,15 @@ class ikanController extends Controller
 
 
 	public function penawaran()
-	{
-		return view('buatPenawaran');
+	{  $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
+		return view('buatPenawaran',compact('count'));
 	}
 
-  public function agend()
-	{
-		return view('dashboardAgen');
-	}
 
 
 	protected function validator(array $data)
@@ -87,8 +105,14 @@ class ikanController extends Controller
 			]);
 		ikan::create($insert);
 		$tampil= ikan::where('idAgen',$request->agen)->orderBy('tanggalPenawaran','desc')->get() ;
+        $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
 
-		return view ('daftarPenawaran',compact('tampil'));
+		return view ('daftarPenawaran',compact('tampil','count'));
 	}
 
 
@@ -96,7 +120,13 @@ class ikanController extends Controller
 
 	public function editPenawaran($id){
 		$edit= ikan::find($id);
-		return view('daftarPenawaranUbah',compact('edit'));
+        $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
+		return view('daftarPenawaranUbah',compact('edit','count'));
 	}
 
 	public function updatePenawaran(Request $request, $id){
@@ -121,17 +151,16 @@ class ikanController extends Controller
 
 		$edit->save();
 
-
-		return redirect('/dashboardAgen');
+        $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+        $count = $notif->count();
+        if ($count==0){
+            $kosong = null;
+            $count = $kosong;
+        }
+		return redirect('/dashboardAgen',compact('count'));
 	}
 
 
-
-	public function profil($id)
-	{
-		return view('profilAgen', compact(Auth::user()->id));
-
-	}
 
 
 
