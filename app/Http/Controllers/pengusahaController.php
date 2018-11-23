@@ -68,8 +68,14 @@ public function lanjutBeli(Request $request)
 
 	]);
 	transaksi::create($insert);
+    $notif= transaksi::where('idPengusaha',Auth::user()->id)->where('statusTransaksi',5)->get();
+    $count = $notif->count();
+    if ($count==0){
+        $kosong = null;
+        $count = $kosong;
+    }
+    return view('dashboardPengusaha', compact(Auth::user()->id,'count'));
 
-	return redirect('/dashboardPengusaha');
 }
 
 
@@ -176,7 +182,7 @@ public function lanjutBeli(Request $request)
             $kosong = null;
             $count = $kosong;
         }
-		return redirect('/transaksiPengusaha/Auth::user()->id',compact('count'));
+		return view('/dashboardPengusaha',compact('count'));
 		}
 
 		public function transaksi($id){

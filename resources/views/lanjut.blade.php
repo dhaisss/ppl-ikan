@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="main-panel">
+<div id="main-panel" style="margin-left: 300px">
 	<div id="top-nav">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -26,7 +26,7 @@
 
 			<!-- Basic element -->
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12" style="margin-top: 50px">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">Konfirmasi Pembelian</h3>
@@ -48,7 +48,7 @@
     <div class="form-group">
       <label class="col-sm-3 control-label">Tanggal Beli</label>
       <div class="col-sm-6">
-        <input type="date"  class="form-control" name="tanggal" value="{{$edit->tanggalBeli}}" readonly="readonly" required>
+        <input type="text"  class="form-control" name="tanggal" value="{{$edit->tanggalBeli}}" readonly="readonly" required>
       </div>
     </div>
     <div class="form-group">

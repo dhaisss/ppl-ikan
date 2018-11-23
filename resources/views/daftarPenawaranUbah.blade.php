@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="main-panel">
+<div id="main-panel" style="margin-left: 300px">
 	<div id="top-nav">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -20,14 +20,14 @@
 			</div>
 		</nav>
 	</div>
-	<div id="content">
+	<div id="content" style="margin-top: 50px">
 		<div class="container-fluid">
 			<!-- basic form -->
 
 			<!-- Basic element -->
 			<div class="row">
 				<div class="col-md-12">
-					<div class="panel panel-default">
+					<div class="panel panel-default" >
 						<div class="panel-heading">
 							<h3 class="panel-title">Data Penawaran Ikan</h3>
 							<span class="text-grey">oleh {{ Auth::user()->name }}</span>
@@ -38,7 +38,7 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label"></label>
 									<div class="col-sm-6">
-										<img id="foto" src="/ikan/{{$edit->fotoIkan}}" class="img-responsive" width="500px" height="300px" align=center>
+										<img id="foto" src="/ikan/{{$edit->fotoIkan}}" class="img-responsive" width="300px"  align=center>
 									</div>
 								</div>
 

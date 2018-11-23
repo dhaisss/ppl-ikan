@@ -22,7 +22,7 @@ class agenController extends Controller
 
 	public function home()
 	{
-        $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+        $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
         $count = $notif->count();
         if ($count==0){
             $kosong = null;
@@ -35,7 +35,7 @@ class agenController extends Controller
 	public function profil($id)
 	{
         $provinces = provinces::all();
-        $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+        $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
         $count = $notif->count();
         if ($count==0){
             $kosong = null;
@@ -49,7 +49,7 @@ class agenController extends Controller
 {
 
 	$tampil= User::where('level',2)->get();
-    $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+    $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
     $count = $notif->count();
     if ($count==0){
         $kosong = null;
@@ -59,14 +59,14 @@ class agenController extends Controller
 }
 
 public function viewNotif($id){
-	$notif=transaksi::where('idAgen',$id)->where('statusTransaksi',1)->get();
+	$notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',$id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
 	$tampils=transaksi::where('idAgen',$id)->where('statusTransaksi',7)->get();
 	return view ('agenNotifikasi',compact('notif','tampils'));
 }
 
 public function transaksi($id){
 	$tampils= transaksi::where('idAgen',$id)->where('statusTransaksi',6)->get();
-    $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+    $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
     $count = $notif->count();
     if ($count==0){
         $kosong = null;
@@ -113,7 +113,7 @@ public function transaksi($id){
 
         }
         $edit->save();
-        $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+        $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
         $count = $notif->count();
         if ($count==0){
             $kosong = null;
@@ -125,13 +125,14 @@ public function transaksi($id){
 	public function terimaTransaksi($id)
 {
 	$transaksi= transaksi::find($id);
-    $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+    $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
     $count = $notif->count();
     if ($count==0){
         $kosong = null;
         $count = $kosong;
     }
-	return view('terima',compact('transaksi','count'));
+    $tampils=transaksi::where('idAgen',$id)->where('statusTransaksi',7)->get();
+	return view('terima',compact('transaksi','count','tampils'));
 }
 
 public function updateTransaksi(Request $request, $id){
@@ -148,10 +149,10 @@ public function updateTransaksi(Request $request, $id){
 
 	$transaksi->save();
 
-	$notif=transaksi::where('idAgen',$id)->where('statusTransaksi',1)->get();
+    $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
 	$tampils=transaksi::where('idAgen',$id)->where('statusTransaksi',7)->get();
 
-    $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+    $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
     $count = $notif->count();
     if ($count==0){
         $kosong = null;
@@ -163,7 +164,7 @@ public function updateTransaksi(Request $request, $id){
 public function tolakTransaksi($id)
 {
 	$edit= transaksi::find($id);
-    $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+    $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
     $count = $notif->count();
     if ($count==0){
         $kosong = null;
@@ -178,15 +179,14 @@ public function updateTolakTransaksi(Request $request, $id){
 	$edit->statusTransaksi='2';
 	$edit->save();
 
-	$notif=transaksi::where('idAgen',$id)->where('statusTransaksi',1)->get();
-
-    $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+    $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
     $count = $notif->count();
     if ($count==0){
         $kosong = null;
         $count = $kosong;
     }
-	return view ('agenNotifikasi',compact('notif','count'));
+    $tampils=transaksi::where('idAgen',$id)->where('statusTransaksi',7)->get();
+	return view ('agenNotifikasi',compact('notif','count','tampils'));
 }
 
 

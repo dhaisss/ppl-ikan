@@ -32,7 +32,7 @@ class HomeController extends Controller
   public function dashboard(){
 if (Auth::User()->level=='1') {
 //  $redirectTo = '/dashboardAgen';  // code...
-    $notif=transaksi::where('idAgen',Auth::user()->id)->where('statusTransaksi',1)->get();
+    $notif=transaksi::join('ikan','transaksi.idIkan','=','ikan.idIkan')->where('transaksi.idAgen',Auth::user()->id)->where('statusTransaksi',1)->where('ikan.statusIkan',1)->get();
     $count = $notif->count();
     if ($count==0){
         $kosong = null;
